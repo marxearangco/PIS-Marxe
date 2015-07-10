@@ -39,6 +39,12 @@ class PatientsController < ApplicationController
  	redirect_to root_path
  end
 
+ def logout
+ 	session.destroy
+ 	redirect_to root_path
+ end
+
+
  private
 
  def find_patient
