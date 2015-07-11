@@ -1,38 +1,48 @@
-<h2>Sign in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
-<div class="form-group">
-    <%= f.label :email, class: "col-sm-2 control-label" %>
-    <div class="col-sm-6">
-        <%= f.email_field :email, autofocus: true , class: "form-control" %>
+<div class="container">
+  <div class="container" style="width: 50rem; margin-top: 1%">
+
+<% if notice %>
+          <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <a href="#" class="alert-link"><%= notice %></a>
+          </div>
+        <% end %>
+        <% if alert %>
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <a href="#" class="alert-link"><%= alert %></a>
+          </div>
+        <% end %>
+
     </div>
 </div>
 
-<div class="form-group">
-    <%= f.label :password, class: "col-sm-2 control-label" %>
-    <div class="col-sm-6">
-        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-    </div>
-</div>
 
-<% if devise_mapping.rememberable? -%>
-<div class="form-group">
-    <div class="col-sm-6 col-sm-offset-2">
-        <%= f.check_box :remember_me %> <%= f.label :remember_me %>
-    </div>
-</div>
-<% end -%>
 
-<div class="form-group">
-    <div class="col-sm-6 col-sm-offset-2">
-        <%= f.submit "Sign in", class: 'btn btn-primary' %>
-    </div>
-</div>
 
-<div class="form-group">
-    <div class="col-sm-6 col-sm-offset-2">
-        <%= render "devise/shared/links" %>
-    </div>
-</div>
+  <div class="container" style="width: 50rem; border: 1px solid gray; box-shadow: 5px 5px 5px 5px gray; margin-top: 10%; border-radius: 10px;">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-signin"}) do |f| %>
+    <h1 class="form-signin-heading text-center">L O G I N</h1>
+    <%= f.label :email, 'Email Address', class: 'sr-only' %>
+    <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email Address' %>
 
-<% end %>
+    <%= f.label :password, 'Password', class: 'sr-only' %>
+    <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password' %>
+
+    <% if devise_mapping.rememberable? -%>
+      <label>
+        <%= f.check_box :remember_me, label: false %>
+        Remember me
+      </label>
+    <% end -%>
+    <br/>
+    
+    <%= f.button "Sign in", class: 'btn btn-lg btn-danger btn-block' %>
+    <%= render "devise/shared/links" %>
+  <% end %>
+
+
+</div> <!-- /container -->
+
+

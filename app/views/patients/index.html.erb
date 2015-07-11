@@ -1,48 +1,54 @@
- <div id="wrapper">
-  <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                
-                <li>
-                   <strong>Search</strong>
-                </li>
-                <li>
-                    <input type="text" class="btn">
-                </li>
-                <li>
-                    <button class="btn">Go</button>
-                </li>
-                
-            </ul>
-        </div>
-<h1><strong>List of Patients</strong></h1>
-<table class="table">
-	<thead>
-		<tr>
-			<th>ID</th>
-			<th>Lastname</th>
-			<th>Firstanme</th>
-			<th>MI</th>
-			<th>Address</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @patient.each do |patient| %>
-		<tr>
-			<td><%= patient.id %></td>
-			<td><%= link_to patient.lname, patient %></td>
-			<td><%= patient.fname %></td>
-			<td><%= patient.mi %></td>
-			<td><%= patient.address %></td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
-</div>
-<br />
-<br />
 
-<%= link_to "Add Patient", new_patient_path %>
-</div>
+  <div class="row">
+    <div class="well col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <strong>Search</strong><br/>
+          <input type="text" class="form-control"><br/>
+          <button class="btn btn-xs btn-danger">Go</button><br/>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="well">
+       <h3>List of Patients</h3>
+       <table class="tablestyle">
+        <!--<thead>
+          <tr>
+            <th>ID</th>
+            <th>LastName</th>
+            <th>FirstName</th>
+            <th>MI</th>
+            <th>Address</th>
+          </tr>
+
+        </thead>
+        -->
+        <tr>
+            <td>ID</td>
+            <td>LastName</td>
+            <td>FirstName</td>
+            <td>MI</td>
+            <td>Address</td>
+          </tr>
+        
+          <% @patient.each do |patient| %>
+          <tr>
+            <td><%= patient.id %></td>
+            <td><%= link_to patient.lname, patient %></td>
+            <td><%= patient.fname %></td>
+            <td><%= patient.mi %></td>
+            <td><%= patient.address %></td>
+          </tr>
+          <% end %>
+        
+      </table>
+      <%= link_to "Add Patient", new_patient_path %>
+    </div>
+    </div>
+  </div>
+
+
 
 <div class="modal fade">
   <div class="modal-dialog">
@@ -62,9 +68,3 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<script>
-  $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-</script>

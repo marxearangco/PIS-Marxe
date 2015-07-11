@@ -40,7 +40,7 @@ class PatientsController < ApplicationController
  end
 
  def logout
- 	session.destroy
+ 	session.clear
  	redirect_to root_path
  end
 
