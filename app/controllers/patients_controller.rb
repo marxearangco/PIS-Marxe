@@ -4,11 +4,14 @@ class PatientsController < ApplicationController
 
  def index
  	@patient = Patient.all
+ 	@grid = initialize_grid(@patient)
  end
 
  def show
  	@diagnosis = Diagnosis.where(patient_id: @patient)
+
  end
+
 
  def new
  	@patient = current_user.patient.build

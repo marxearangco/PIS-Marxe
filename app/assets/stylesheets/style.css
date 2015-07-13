@@ -5,6 +5,7 @@
  */
 
 /* Toggle Styles */
+* {font-family: "OpenSans" }
 
 #wrapper {
     padding-left: 0;
@@ -168,3 +169,16 @@
   border-top-right-radius: 0;
 }
 
+.tab-pane {
+
+    border-left: 1px solid #989898;
+    border-right: 1px solid #989898;
+    border-bottom: 1px solid #989898;
+    border-radius: 0px 0px 5px 5px;
+    padding: 10px;
+    height: 300px;
+}
+
+.nav-tabs {
+    margin-bottom: 0;
+}
