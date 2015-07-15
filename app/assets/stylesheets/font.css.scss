@@ -2,9 +2,7 @@
     font-family: 'OpenSans';
     src: asset-url('OpenSans-webfont.eot');
     src: asset-url('OpenSans-Regular.eot?#iefix') format('embedded-opentype'),
-           asset-url('OpenSans-Regular.woff') format('woff'),
-           asset-url('OpenSans-Regular.ttf') format('truetype'),
-           asset-url('OpenSans-Regular.svg#OpenSans') format('svg');
+           asset-url('OpenSans-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
