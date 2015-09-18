@@ -1,0 +1,143 @@
+<% @information.each do |f| %>
+<div class="container">
+	<br />
+	<div class="row fluid">
+		<div class="col col-sm-2">
+			<%= image_tag @patient.image.url(:medium), class: 'img-thumbnail', style: 'height: 150px' %>
+		</div>
+
+		<div class="col col-sm-10">
+			<div class="row">
+				<div class="col-xs-9">
+					<div class="row">
+						<div class="col-xs-12">
+						<span class="lblinfo">
+							<h2><%= @patient.lname + ', ' + @patient.fname + ' ' + @patient.mi  %></h2>
+						</span>
+						<p><%= @patient.address %></p>
+						<p><%= f.mobilephone %></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-3">
+					<div>
+					<p style ="margin-top: 30px" class="pull-right">Program Started: <span class="lblinfo"><%= f.dps.strftime("%D") if f.dps %></span></p>
+					<p class="pull-right">Profile Updated: <span class="lblinfo"><%= @patient.updated_at.strftime("%D") %></span></p>
+					<p class="pull-right">Last Visit: <span class="lblinfo"><%= @patient.updated_at.strftime("%D") %></span></p>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+		<hr>
+			<div class="row">
+				<div class="panel">
+					<!-- Nav tabs -->
+					<ul class="nav nav-pills nav-wizard">
+						<li class="active">
+							<a href="#info" data-toggle="tab">Information</a><div class="nav-arrow"></div>
+						</li>
+						<li><div class="nav-wedge"></div>
+							<a href="#history" data-toggle="tab">Chief Complaints</a><div class="nav-arrow"></div>
+						</li>
+						<li><div class="nav-wedge"></div>
+							<a href="#treatment" data-toggle="tab">Treatment History</a>
+						</li>
+					</ul>
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="info" style ="height:300px">
+							<br />
+							<div class="row">
+								<div class="col-xs-4">
+									<span>Occupation :
+									<label class="lblinfo"><%= f.occupation %></label></span>
+									<br>
+									<br>
+									<span>Age :
+									<label class="lblinfo"><%= f.age %></label></span>
+									<br>
+									<br>
+									<span>Sex :
+									<label class="lblinfo"><%= f.sex %></label></span>
+									<br>
+									<br>
+									<span>Birth Date :
+									<label class="lblinfo"><%= f.bday.strftime("%D") if f.bday %></label></span>
+									<br>
+									<br>
+									<span>Marital Status :
+									<label class="lblinfo"><%= f.status %></label></span>
+								</div>
+								<div class="col-xs-6">
+									<span>Mobile Phone :
+									<label class="lblinfo"><%= f.mobilephone %></label></span>
+									<br>
+									<br>
+									<span>Business Phone :
+									<label class="lblinfo"><%= f.businessphone %></label></span>
+									<br>
+									<br>
+									<span>Home Phone :
+									<label class="lblinfo"><%= f.homephone %></label></span>
+									<br>
+									<br>
+									<span>Referred by :
+									<label class="lblinfo"><%= f.referredby %></label></span>
+									<br>
+									<br>
+									<span>Spouse :
+									<label class="lblinfo"><%= f.spouse %></label></span>
+								</div>
+								<div class="col-xs-2 pull-right">
+									<%= link_to raw("<span class='glyphicon glyphicon-pencil'></span>"), '#', class: 'btn btn-default btn-round', id: 'infox' %>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-5">
+								
+								</div>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="history">History&hellip;</div>
+						<div role="tabpanel" class="tab-pane" id="treatment">Diagnosis&hellip;</div>
+					</div>
+			</div>	
+		</div>
+</div>
+
+<% end %>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$('#infox').click(function(){
+	$("#info").html("<%= escape_javascript(render 'forminfo') %>");
+})
+
+	// var appoint_date = '2015-09-03';
+
+	$('#information_bday').datetimepicker({
+		format: 'YYYY-MM-DD'
+		// defaultDate: appoint_date
+	});
+	// $('#appointment_appointment_date').datetimepicker('update', new Date());
+
+$('#edit_information_<%= params[:id] %>').submit(function(event) {
+	event.preventDefault();
+	  var form = $(this);
+	  $.ajax({
+				type: 'POST',
+				url: '<%= information_path(params[:id]) %>',
+				data: form.serialize(),
+				//processData: false,
+	        	//contentType: false,
+				success: function(){
+					alert('Data updated!');
+	        	},
+							
+			});
+	});
+});
+
+</script>

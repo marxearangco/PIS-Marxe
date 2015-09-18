@@ -11,18 +11,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150709080118) do
+ActiveRecord::Schema.define(version: 20150905162200) do
+
+  create_table "appointments", force: true do |t|
+    t.integer  "patient_id"
+    t.integer  "user_id"
+    t.string   "purpose"
+    t.string   "result"
+    t.text     "remarks"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "appointment_date"
+  end
+
+  add_index "appointments", ["patient_id"], name: "index_appointments_on_patient_id", using: :btree
+  add_index "appointments", ["user_id"], name: "index_appointments_on_user_id", using: :btree
 
   create_table "diagnoses", force: true do |t|
     t.text     "content"
-    t.integer  "post_id"
+    t.integer  "patient_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "diagnoses", ["post_id"], name: "index_diagnoses_on_post_id", using: :btree
+  add_index "diagnoses", ["patient_id"], name: "index_diagnoses_on_post_id", using: :btree
   add_index "diagnoses", ["user_id"], name: "index_diagnoses_on_user_id", using: :btree
+
+  create_table "information", force: true do |t|
+    t.integer  "patient_id"
+    t.string   "religion"
+    t.string   "status"
+    t.string   "sex"
+    t.integer  "age"
+    t.date     "bday"
+    t.string   "height"
+    t.string   "weight"
+    t.string   "homephone"
+    t.string   "businessphone"
+    t.string   "mobilephone"
+    t.string   "email"
+    t.string   "occupation"
+    t.string   "spouse"
+    t.string   "referredby"
+    t.datetime "dps"
+  end
+
+  add_index "information", ["patient_id"], name: "index_information_on_patient_id", using: :btree
 
   create_table "patients", force: true do |t|
     t.string   "lname"

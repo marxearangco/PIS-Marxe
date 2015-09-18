@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :patient
   has_many :diagnosis
+  has_many :appointment
 end

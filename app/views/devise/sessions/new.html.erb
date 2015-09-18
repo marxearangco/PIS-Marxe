@@ -1,48 +1,78 @@
 
-<div class="container">
-  <div class="container" style="width: 50rem; margin-top: 1%">
-
-<% if notice %>
-          <div class="alert alert-success alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <a href="#" class="alert-link"><%= notice %></a>
-          </div>
-        <% end %>
-        <% if alert %>
-          <div class="alert alert-danger alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <a href="#" class="alert-link"><%= alert %></a>
-          </div>
-        <% end %>
-
+<div class="container-fluid hidden-sm hidden-xs">
+  <div class="row">
+    <div class="col-xs-4">
     </div>
+    <div class="col-xs-4">
+      <div class="well">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-signin"}) do |f| %>
+        <h1 class="form-signin-heading text-center">L O G I N</h1>
+        <%= f.label :email, 'Email Address', class: 'sr-only' %>
+        <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email Address', required: true %>
+        <br />
+        <%= f.label :password, 'Password', class: 'sr-only' %>
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password', required: true %>
+
+        <% if devise_mapping.rememberable? -%>
+        <label>
+          <%= f.check_box :remember_me, label: false %>
+          Remember me
+        </label>
+        <% end -%>
+        <br/>
+
+        <%= f.button "Sign in", class: 'btn btn-lg btn-danger btn-block' %>
+        <%= render "devise/shared/links" %>
+        <% end %>
+
+      </div>
+    </div>
+    <div class="col-xs-4">
+    </div>
+  </div>
 </div>
 
+<div class="container-fluid hidden-lg hidden-md">
+  <div class="row">
+    <% if notice %>
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <a href="#" class="alert-link"><%= notice %></a>
+    </div>
+    <% end %>
+    <% if alert %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <a href="#" class="alert-link"><%= alert %></a>
+    </div>
+    <% end %>
 
+  </div>
 
+  
+  <div class="row">
+    <div class="well">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-signin"}) do |f| %>
+      <h1 class="form-signin-heading text-center">L O G I N</h1>
+      <%= f.label :email, 'Email Address', class: 'sr-only' %>
+      <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email Address', required: true %>
+      <br />
+      <%= f.label :password, 'Password', class: 'sr-only' %>
+      <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password', required: true %>
 
-  <div class="container" style="width: 50rem; border: 1px solid gray; box-shadow: 5px 5px 5px 5px gray; border-radius: 10px;">
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-signin"}) do |f| %>
-    <h1 class="form-signin-heading text-center">L O G I N</h1>
-    <%= f.label :email, 'Email Address', class: 'sr-only' %>
-    <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email Address' %>
-
-    <%= f.label :password, 'Password', class: 'sr-only' %>
-    <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password' %>
-
-    <% if devise_mapping.rememberable? -%>
+      <% if devise_mapping.rememberable? -%>
       <label>
         <%= f.check_box :remember_me, label: false %>
         Remember me
       </label>
-    <% end -%>
-    <br/>
-    
-    <%= f.button "Sign in", class: 'btn btn-lg btn-danger btn-block' %>
-    <%= render "devise/shared/links" %>
-  <% end %>
+      <% end -%>
+      <br/>
+
+      <%= f.button "Sign in", class: 'btn btn-lg btn-danger btn-block' %>
+      <%= render "devise/shared/links" %>
+      <% end %>
 
 
-</div> <!-- /container -->
-
-
+    </div>
+  </div>
+</div>

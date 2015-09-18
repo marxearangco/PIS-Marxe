@@ -5,8 +5,7 @@
  */
 
 /* Toggle Styles */
-* {font-family: "OpenSans" }
-
+* {font-family: "OpenSans", Sans-serif}
 #wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
@@ -181,4 +180,62 @@
 
 .nav-tabs {
     margin-bottom: 10;
+}
+
+.img-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.lblinfo {
+    color: #FF4209;
+    text-align: left;
+    font-weight: bold;
+    /*border:none;*/
+
+}
+input.input-sm {
+    font-size: 14px;
+    padding: 0px 12px;
+}
+div.btm-bord {
+    border-bottom: 1px solid gray
+} 
+.btn-round {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.btn-round.btn-lg {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-round.btn-sm {
+    width: 34px;
+    height: 34px;
+}
+
+.btn-round.btn-xs {
+    width: 24px;
+    height: 24px;
+}
+
+.text-left{
+    text-align: left;
+}
+.alert-fixed {
+    position:fixed; 
+    disposition:inline;
+    top: 60px; 
+    right: 100px; 
+    width: 70%;
+    z-index:9999; 
+    border-radius:0px;
+    opacity: 0.9;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
 }

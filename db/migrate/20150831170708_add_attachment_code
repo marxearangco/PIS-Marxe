@@ -1,0 +1,13 @@
+class AddAttachmentCode:integerImage:attachmentToImages < ActiveRecord::Migration
+  def self.up
+    change_table :images do |t|
+      t.attachment :code:integer
+      t.attachment :image:attachment
+    end
+  end
+
+  def self.down
+    remove_attachment :images, :code:integer
+    remove_attachment :images, :image:attachment
+  end
+end

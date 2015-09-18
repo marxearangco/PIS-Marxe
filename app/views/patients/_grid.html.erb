@@ -1,14 +1,11 @@
- 
- <%= define_grid(@grid) do |g|
+<%= define_grid(@grid) do |g|
         g.column name:  'ID', attribute: 'id', detach_with_id: :id_filter
         g.column name:  'LastName', attribute: 'lname', detach_with_id: :lname_filter
         g.column name:  'FirstName', attribute: 'fname', detach_with_id: :fname_filter
         g.column name:  'MI', attribute: 'mi', detach_with_id: :mi_filter
         g.column name:  'Address', attribute: 'address', detach_with_id: :add_filter
         g.column name: 'Action', attribute: 'address', detach_with_id: :action_filter do |g|
-        	link_to raw('<span class="glyphicon glyphicon-user" aria-hidden="true"></span>'), 'patients/' + g.id.to_s, remote: true
+        	link_to raw('<span class="glyphicon glyphicon-user" aria-hidden="true"></span>'), patient_path(g.id), remote: true
         end
-
-
 end -%>
 

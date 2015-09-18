@@ -1,8 +1,38 @@
-<%= simple_form_for @patient do |f| %>
-	<%= f.input :image %>
-	<%= f.input :lname %>
-	<%= f.input :fname %>
-	<%= f.input :mi %>
-	<%= f.input :address %>
-	<%= f.button :submit %>
+<%= simple_form_for @patient, wrapper: :pis_form, wrapper_mappings: { pis: :pis_form, file: :vertical_file_input, mi: :pis_form_small } do |f| %>
+	<div class="row">
+		<div class="col-xs-9">
+		Choose Picture
+		<%= f.file_field :image, class: 'form-control' %>
+		</div>
+	</div>
+	<br />
+	<div class="row">
+		<div class="col-xs-4">
+			First Name
+			<%= f.text_field :fname, class: 'form-control' %>
+		</div>
+		<div class="col-xs-4">
+			Middle Name
+			<%= f.text_field :mi, class: 'form-control' %>
+		</div>
+		<div class="col-xs-4">
+			Last Name
+			<%= f.text_field :lname, class: 'form-control' %>
+		</div>
+	</div>
+	<br />
+	<div class="row">
+		<div class="col-xs-12">
+			Address:
+			<%= f.text_area :address, class: 'form-control' %>
+		</div>
+	</div>
+	
+	<br/>
+<div class="modal-footer">
+<div class="btn-group form-actions">
+	<!--%= link_to 'Back', @patient, class: 'btn btn-default' %-->
+	<%= f.button :submit, class: 'btn btn-default' %>
+</div>
+</div>
 <% end %>

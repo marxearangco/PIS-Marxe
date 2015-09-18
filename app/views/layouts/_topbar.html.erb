@@ -1,44 +1,34 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
+<% @appcount=Appointment.where("remarks is null").count(:id) %>
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #0E0E29; border: none">
+  <div class="container">
+    <div class="row">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcollapse" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#menu-toggle" id="menu-toggle">Natural Complexions Inc.</a>
+      <span class="navbar-brand" style="color: #F1EAEA"><b>Natural Complexions Inc.</b></span>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        
-      </ul>
-      
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-        <% if notice %>
-          <div class="alert alert-success alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <a href="#" class="alert-link"><%= notice %></a>
-          </div>
-        <% end %>
-        <% if alert %>
-          <div class="alert alert-danger alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <a href="#" class="alert-link"><%= alert %></a>
-          </div>
-        <% end %>
-      </li>
-        <li><a href="#">Search</a></li>
+    <div class="collapse navbar-collapse" id="navcollapse">
+      <ul class="nav nav-pills navbar-nav navbar-right">
+        <li class="<%= 'active' if request.path=='/' %>"><%= link_to 'Home', root_path %></li>
+        <li class="<%= 'active' if request.path=='/patients' or request.path == '/patients/' + params[:id].to_s %>"><%= link_to 'Patients', patients_path %></li>
+        <li class="<%= 'active' if request.path=='/appointment' %>"><%= link_to raw("Appointments<span class='badge'>#{@appcount}</span>"), appointments_path, data: {toogle: 'pill'} %></li>
+        <li><a href="#" data-toggle='pill'>Search</a></li>
         <% if user_signed_in? %>
-          <li><%= link_to('Logout', destroy_user_session_path, :method => :delete, confirm: "Are you sure You want to Logout?") %></li>
+          <li><%= link_to('Logout', destroy_user_session_path, :method => :delete, data: { confirm: "Are you sure You want to Logout?" } ) %></li>
         <% else %>
           <li><%= link_to('Login', new_user_session_path) %></li>
         <% end %>
         
     </div><!-- /.navbar-collapse -->
+   </div><!-- /.row -->
   </div><!-- /.container-fluid -->
-</nav>
+  <div style="height: 5px; background-color: #FF4209">
+</div>
+</nav>  

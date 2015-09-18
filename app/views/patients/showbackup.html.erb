@@ -1,0 +1,86 @@
+<div class="container">
+
+	<div class="row">
+		<div class="col col-sm-2">
+			<%= image_tag @patient.image.url(:medium), class: 'img-thumbnail' %>
+		</div>
+		<div class="col col-sm-7">
+			<h3><%= @patient.fname << ' ' << @patient.mi << ' ' << @patient.lname  %></h3>
+			<p> <%= @patient.address %></p>
+			<br/>
+			<div>
+			<% render 'diagnosis/form' %>
+			<%= link_to "Home", root_path, class: 'btn btn-default' %>
+
+			<%= link_to "Edit", edit_patient_path(@patient), class: 'btn btn-default', remote: true, data: { toggle: 'modal', target: "#view" } %>
+			<!-- link_to "Edit", "#", id: 'infox', class -->
+			<%= button_tag raw("<span class='glyphicon glyphicon-pencil'></span> Edit"), id: 'infox', class: "btn btn-default" %>
+			<input type="button" id="infox" class="btn btn-default" />
+			<%= link_to "Delete", patient_path(@patient), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %>
+			</div>
+		</div>
+		<div class="col col-sm-3">
+			<br/>Last Visit:
+		</div>
+	</div>
+</div>
+<div>
+<hr>
+<div class="panel" style="height: 500px">
+<!-- Nav tabs -->
+<ul class="nav nav-pills nav-wizard">
+<li class="active"><a href="#info" data-toggle="tab">Information</a><div class="nav-arrow"></div></li>
+<li><div class="nav-wedge"></div><a href="#history" data-toggle="tab">History</a><div class="nav-arrow"></div></li>
+<li><div class="nav-wedge"></div><a href="#contact" data-toggle="tab">Contact</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="info"></div>
+<div role="tabpanel" class="tab-pane" id="history">History&hellip;</div>
+<div role="tabpanel" class="tab-pane" id="contact">Diagnosis&hellip;</div>
+
+</div>
+
+</div>
+</div>
+<br/>
+<div class="row">
+
+</div>
+</div>
+
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$('#infox').click(function(){
+	$("#info").html("<%= escape_javascript(render 'forminfo') %>");
+})
+
+	// var appoint_date = '2015-09-03';
+
+	$('#information_bday').datetimepicker({
+		format: 'YYYY-MM-DD'
+		// defaultDate: appoint_date
+	});
+	// $('#appointment_appointment_date').datetimepicker('update', new Date());
+
+$('#edit_information_<%= params[:id] %>').submit(function(event) {
+	event.preventDefault();
+	  var form = $(this);
+	  $.ajax({
+				type: 'POST',
+				url: '<%= information_path(params[:id]) %>',
+				data: form.serialize(),
+				//processData: false,
+	        	//contentType: false,
+				success: function(){
+					alert('Data updated!');
+	        	},
+							
+			});
+	});
+});
+
+</script>

@@ -1,0 +1,54 @@
+<% @information.each do |f| %>
+	<h4 class="panel"><b>Personal Information</b></h4>
+	<div class="row">
+		<div class="col-xs-3">
+			<label>Occupation</label>
+			<label class="form-control"><%= f.occupation %></label>
+		</div>
+		<div class="col-xs-3">
+			<label>Religion</label>
+			<label class="form-control"><%= f.religion %></label>
+		</div>
+		<div class="col-xs-3">
+			<label>Civil Status</label>
+			<label class="form-control"><%= f.status %></label>
+		</div>
+		<div class="col-xs-3">
+			<label>Sex</label>
+			<label class="form-control"><%= f.sex %></label>
+		</div>
+	</div>
+	<br />
+	<div class="row">
+		<div class="col-xs-3">
+			<label>Birth Date</label>
+		</div>
+		<div class="col-xs-3">
+			<label>Age</label>
+		</div>
+		<div class="col-xs-3">
+			<label>Height</label>
+		</div>
+		<div class="col-xs-3">
+			<label>Weight</label>
+		</div>
+	</div>
+	<br />
+	<h4><u><b>Contact Numbers</b></u></h4>
+	<div class="row">
+		<div class="col-xs-3">
+			<label>Home</label>
+		</div>
+		<div class="col-xs-3">
+			<label>Business</label>
+		</div>
+		<div class="col-xs-3">
+			<label>Mobile No.</label>
+		</div>
+		<div class="col-xs-3">
+			<label>Email</label>
+		</div>
+	</div>
+	<br/>
+</div>
+<% end %>

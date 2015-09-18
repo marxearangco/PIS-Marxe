@@ -1,0 +1,159 @@
+<% @information.each do |f| %>
+<div class="container">
+	<br />
+	<div>
+		<div class="col-xs-8">
+			<div class="row">
+				<div class="col col-sm-3">
+					<%= image_tag @patient.image.url(:medium), class: 'img-thumbnail', style: 'height: 150px' %>
+				</div>
+				<div class="col col-sm-9">
+					<div class="row">
+						<span class="lblinfo">
+							<h2><%= @patient.lname + ', ' + @patient.fname + ' ' + @patient.mi  %></h2>
+						</span>
+						<p><%= @patient.address %></p>
+						<br>
+						<br>
+						<p style="font-size: 12px">
+							<span class="glyphicon glyphicon-list-alt"></span> Program Started: <span class="lblinfo"><%= f.dps.strftime("%D") if f.dps %></span>&nbsp;&nbsp;&nbsp; 
+							<span class="glyphicon glyphicon-user"></span> Profile Updated: <span class="lblinfo"><%= @patient.updated_at.strftime("%D") %></span>&nbsp;&nbsp;&nbsp; 
+							<span class="glyphicon glyphicon-pushpin"></span> Last Visit: <span class="lblinfo"><%= @patient.updated_at.strftime("%D") %></span>
+						</p>	
+					</div>	
+				</div>
+			</div>
+			<hr>
+			<div id="show">
+				<div class="row form-horizontal">
+					<div class="panel">
+						<div class="col-xs-5">
+							<div class="form-group">
+								<%= label_tag :occupation,'Occupation', class: 'control-label col-sm-4', style: 'text-align: left' %>
+								<div class="col-sm-8">
+									<%= label_tag :occupation, f.occupation, class: 'form-control lblinfo' %>
+								</div>
+							</div>
+							<div class="form-group">
+								<%= label_tag :bday, 'Birth Date', class: 'pull-left control-label col-sm-4', style: 'text-align: left' %>
+								<div class="col-sm-8">
+									<%= label_tag :bday, f.bday, class: 'form-control lblinfo' %>
+								</div>
+							</div>
+							<div class="form-group">
+								<%= label_tag :age, nil, class: 'pull-left control-label col-sm-4', style: 'text-align: left' %>
+								<div class="col-sm-8">
+									<%= label_tag :age, f.age, class: 'form-control lblinfo' %>
+								</div>
+							</div>
+							<div class="form-group">
+								<%= label_tag :sex, nil, class: 'pull-left control-label col-sm-4', style: 'text-align: left' %>
+								<div class="col-sm-8">
+									<%= label_tag :sex, f.sex,class: 'form-control lblinfo' %>
+								</div>
+							</div>
+							<div class="form-group">
+								<%= label_tag :status, 'Status', class: 'pull-left control-label col-sm-4', style: 'text-align: left' %>
+								<div class="col-sm-8">
+									<%= label_tag :status, f.status, class: 'form-control lblinfo' %>
+								</div>
+							</div>
+							<div class="form-group">
+								<%= label_tag :spouse, nil, class: 'pull-left control-label col-sm-4', style: 'text-align: left' %>
+								<div class="col-sm-8">
+									<%= label_tag :spouse, f.spouse, class: 'form-control lblinfo' %>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-1">
+						</div>
+						<div class="col-xs-6">
+							<div class="form-group">
+								<%= label_tag :mobilephone, 'Mobile No.', class: 'control-label col-sm-4', style: 'text-align: left' %>
+								<div class="col-sm-8">
+									<%= label_tag :mobilephone,f.mobilephone, class: 'form-control lblinfo' %>
+								</div>
+							</div>
+							<div class="form-group">
+								<%= label_tag :businessphone, 'Business No.', class: 'pull-left control-label col-sm-4', style: 'text-align: left' %>
+								<div class="col-sm-8">
+									<%= label_tag :businessphone, f.businessphone,class: 'form-control lblinfo' %>
+								</div>
+							</div>
+							<div class="form-group">
+								<%= label_tag :homephone, 'Home Phone', class: 'pull-left control-label col-sm-4', style: 'text-align: left' %>
+								<div class="col-sm-8">
+									<%= label_tag :homephone, f.homephone, class: 'form-control lblinfo' %>
+								</div>
+							</div>
+							<div class="form-group">
+								<%= label_tag :referredby, 'Referred by', class: 'pull-left control-label col-sm-4', style: 'text-align: left' %>
+								<div class="col-sm-8">
+									<%= label_tag :referredby, f.referredby, class: 'form-control lblinfo' %>
+								</div>
+							</div>
+							<div class="col-xs-2 pull-right">
+								<%= link_to raw("<span class='glyphicon glyphicon-pencil'></span>"), '#', class: 'btn btn-default btn-round', id: 'infox' %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>	
+		<div class="col-xs-4 well hidden-sm hidden-xs">
+			<div class="panel" style="height: 500px">
+				<!-- Nav tabs -->
+				<ul class="nav nav-pills nav-wizard">
+					<li class="active">
+						<a href="#history" data-toggle="tab">History</a>
+						<div class="nav-arrow"></div>
+					</li>
+					<li>
+						<div class="nav-wedge"></div>
+						<a href="#appointments" data-toggle="tab">Appoinments</a>
+					</li>
+				</ul>
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="history">History&hellip;</div>
+					<div role="tabpanel" class="tab-pane" id="appoinments">Appointments&hellip;</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>	
+<% end %>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+$('#infox').click(function(){
+	$("#show").html("<%= escape_javascript(render 'forminfo') %>");
+})
+
+// var appoint_date = '2015-09-03';
+
+$('#information_bday').datetimepicker({
+	format: 'YYYY-MM-DD'
+// defaultDate: appoint_date
+});
+// $('#appointment_appointment_date').datetimepicker('update', new Date());
+
+$('#edit_information_<%= params[:id] %>').submit(function(event) {
+	event.preventDefault();
+	var form = $(this);
+	$.ajax({
+		type: 'POST',
+		url: '<%= information_path(params[:id]) %>',
+		data: form.serialize(),
+//processData: false,
+//contentType: false,
+success: function(){
+	alert('Data updated!');
+},
+
+});
+});
+});
+
+				</script>

@@ -8,15 +8,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <div class="alert-fixed pull-right">
+      <%= render partial: "layouts/flash", flash: flash %>
+  </div>
 	<% if user_signed_in? %>
-		<%= render :partial=> 'layouts/topbar' %>
+		  <%= render :partial=> 'layouts/topbar' %>
 	<% end %>
-<br>
-<br>
-<br>
-<div class="container-fluid">
-	<%= yield %>
+<br />
+<br />
+<br />
+<div class="container">
+	<div class="row" id="content">
+		<%= yield %>
+	</div>
 </div>
+<div class="modal fade" tabindex="-1" role="dialog" id="view">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div id="viewdialog">
+        <!-- new patient dialog -->
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
