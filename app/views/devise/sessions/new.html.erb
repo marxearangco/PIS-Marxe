@@ -1,78 +1,30 @@
-
-<div class="container-fluid hidden-sm hidden-xs">
-  <div class="row">
-    <div class="col-xs-4">
+<div class="modal-dialog modal-sm" style="border: 1px solid gray">
+    <div class="modal-header">
+        <span class="text-center"><strong><span class="glyphicon glyphicon-lock"></span> PLEASE LOGIN</strong></span>
     </div>
-    <div class="col-xs-4">
-      <div class="well">
+    <div class="modal-body">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-signin"}) do |f| %>
-        <h1 class="form-signin-heading text-center">L O G I N</h1>
-        <%= f.label :email, 'Email Address', class: 'sr-only' %>
-        <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email Address', required: true %>
-        <br />
-        <%= f.label :password, 'Password', class: 'sr-only' %>
-        <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password', required: true %>
-
+        <div class="form-group has-feedback has-feedback-left">
+            <%= f.label :login, 'Username', class: 'sr-only' %>
+            <%= f.text_field :login, autofocus: true, class: 'form-control', placeholder: 'Username', required: true %>
+            <i class="form-control-feedback glyphicon glyphicon-user"></i>
+        </div>
+        <div class="form-group has-feedback has-feedback-left">
+            <%= f.label :password, 'Password', class: 'sr-only' %>
+            <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password', required: true %>
+            <i class="form-control-feedback glyphicon glyphicon-wrench"></i>
+        </div>
         <% if devise_mapping.rememberable? -%>
         <label>
           <%= f.check_box :remember_me, label: false %>
           Remember me
-        </label>
-        <% end -%>
-        <br/>
-
-        <%= f.button "Sign in", class: 'btn btn-lg btn-danger btn-block' %>
-        <%= render "devise/shared/links" %>
-        <% end %>
-
-      </div>
-    </div>
-    <div class="col-xs-4">
-    </div>
-  </div>
-</div>
-
-<div class="container-fluid hidden-lg hidden-md">
-  <div class="row">
-    <% if notice %>
-    <div class="alert alert-success alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <a href="#" class="alert-link"><%= notice %></a>
-    </div>
-    <% end %>
-    <% if alert %>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <a href="#" class="alert-link"><%= alert %></a>
-    </div>
-    <% end %>
-
-  </div>
-
-  
-  <div class="row">
-    <div class="well">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-signin"}) do |f| %>
-      <h1 class="form-signin-heading text-center">L O G I N</h1>
-      <%= f.label :email, 'Email Address', class: 'sr-only' %>
-      <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email Address', required: true %>
-      <br />
-      <%= f.label :password, 'Password', class: 'sr-only' %>
-      <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password', required: true %>
-
-      <% if devise_mapping.rememberable? -%>
-      <label>
-        <%= f.check_box :remember_me, label: false %>
-        Remember me
       </label>
       <% end -%>
       <br/>
 
-      <%= f.button "Sign in", class: 'btn btn-lg btn-danger btn-block' %>
+      <%= f.button "Sign in", class: 'btn btn-orange btn-block' %>
       <%= render "devise/shared/links" %>
       <% end %>
 
-
-    </div>
   </div>
 </div>

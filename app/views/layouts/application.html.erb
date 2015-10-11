@@ -7,13 +7,13 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body style="background-color: #F0F0F0;">
   <div class="alert-fixed pull-right">
       <%= render partial: "layouts/flash", flash: flash %>
   </div>
-	<% if user_signed_in? %>
+	<!--% if user_signed_in? %-->
 		  <%= render :partial=> 'layouts/topbar' %>
-	<% end %>
+	<!--% end %-->
 <br />
 <br />
 <br />
@@ -26,7 +26,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div id="viewdialog">
-        <!-- new patient dialog -->
+        <!-- content dialog -->
       </div>
     </div>
   </div>

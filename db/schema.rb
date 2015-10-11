@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150905162200) do
+ActiveRecord::Schema.define(version: 20151008144456) do
 
   create_table "appointments", force: true do |t|
     t.integer  "patient_id"
@@ -73,6 +73,20 @@ ActiveRecord::Schema.define(version: 20150905162200) do
     t.datetime "image_updated_at"
   end
 
+  create_table "statistics", force: true do |t|
+    t.integer  "patient_id"
+    t.integer  "appointment_id"
+    t.string   "bp"
+    t.decimal  "weight",         precision: 10, scale: 0
+    t.decimal  "height",         precision: 10, scale: 0
+    t.datetime "date_gathered"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
+
+  add_index "statistics", ["appointment_id"], name: "index_statistics_on_appointment_id", unique: true, using: :btree
+  add_index "statistics", ["patient_id"], name: "index_statistics_on_patient_id", unique: true, using: :btree
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -86,11 +100,12 @@ ActiveRecord::Schema.define(version: 20150905162200) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "name"
+    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   create_table "views", force: true do |t|
     t.string   "email",                  default: "", null: false

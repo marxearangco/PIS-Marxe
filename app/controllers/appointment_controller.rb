@@ -3,7 +3,12 @@ class AppointmentController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @appointment = Appointment.select('appointments.*, concat(a.lname,", ",a.fname, " ",a.mi) as name').joins('Left join patients a on appointments.patient_id=a.id').order(:appointment_date)
+    # strsql = Appointment.select('appointments.*, concat(a.lname,", ",a.fname, " ",a.mi) as name').joins('Left join patients a on appointments.patient_id=a.id').order(:appointment_date)
+    @appointment = initialize_grid(Appointment,
+      include: :patient,
+      #conditions: {:patient_id=>'5'},
+      per_page: 10
+    )
   end
 
   def create
@@ -41,7 +46,7 @@ class AppointmentController < ApplicationController
   def new
     @id = current_user.id
     @appointment = Appointment.new
-    @patient_name = "Please Select.." 
+    @patient_name = "Please Select.."
   end
 
   def edit

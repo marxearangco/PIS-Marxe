@@ -1,0 +1,134 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	<span style="font-size: 16px"><b>New Patient</b></span>
+</div>
+<div class="modal-body">
+	<%= simple_form_for @patient, url: patient_create_path, :method=> 'Post', wrapper: :pis_form, wrapper_mappings: { pis: :pis_form, file: :vertical_file_input, mi: :pis_form_small } do |f| %>
+	<div class="row">
+		<div class="col-xs-9">
+			Choose Picture
+			<%= f.file_field :image, class: 'form-control' %>
+		</div>
+	</div>
+	<br /> 
+	<div class="row">
+		<div class="col-xs-4">
+			First Name
+			<%= f.text_field :fname, class: 'form-control' %>
+		</div>
+		<div class="col-xs-4">
+			Middle Name
+			<%= f.text_field :mi, class: 'form-control' %>
+		</div>
+		<div class="col-xs-4">
+			Last Name
+			<%= f.text_field :lname, class: 'form-control' %>
+		</div>
+	</div>
+	<br />
+	<div class="row">
+		<div class="col-xs-12">
+			Address:
+			<%= f.text_area :address, class: 'form-control' %>
+		</div>
+	</div>
+	
+	<br/>
+
+	<!-- form info -->
+	<!--%= simple_form_for(@info, html: { class: 'form-horizontal' }) do |f| %-->
+	<!--%= f.hidden_field :patient_id %-->
+	<%= f.fields_for :information do |g| %>
+	<div class="row">
+		<div class="col-xs-6">
+			<div class="form-group">
+				<%= g.label :occupation, nil, class: 'control-label', style: 'text-align: left' %>
+				<%= g.text_field :occupation, class: 'form-control input-sm' %>
+			</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="form-group">
+				<%= g.label :bday, 'Birth Date', class: 'pull-left control-label', style: 'text-align: left' %>
+				<%= g.text_field :bday, class: 'form-control input-sm' %>
+			</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="form-group">
+				<%= g.label :age, nil, class: 'pull-left control-label', style: 'text-align: left' %>
+				<%= g.text_field :age, class: 'form-control input-sm' %>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6">
+			<div class="form-group">
+				<%= g.label :spouse, nil, class: 'pull-left control-label', style: 'text-align: left' %>
+				<%= g.text_field :spouse, class: 'form-control input-sm' %>
+			</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="form-group">
+				<%= g.label :status, 'Status', class: 'pull-left control-label', style: 'text-align: left' %>
+				<%= g.select :status, options_for_select([[ "Single", "Single"],["Married", "Married"],["Separated", "Separated"],["Widow(er)", "Widow(er)"]], "single"),{}, {class: 'form-control input-sm', style: 'font-size: 14px'} %>
+			</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="form-group">
+				<%= g.label :sex, nil, class: 'pull-left control-label', style: 'text-align: left' %>
+				<%= g.select :sex, options_for_select([[ "Male", "Male"],["Female", "Female"]], "male"),{}, {class: 'form-control input-sm', style: 'font-size: 14px'} %>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6">
+			<%= g.label :referredby, 'Referred by', class: 'pull-left control-label', style: 'text-align: left' %>
+			<%= g.text_field :referredby, class: 'form-control input-sm' %>
+		</div>
+		<div class="col-xs-6">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4">
+			<div class="form-group">
+				<%= g.label :mobilephone, 'Mobile No.', class: 'control-label', style: 'text-align: left' %>
+				<%= g.text_field :mobilephone, class: 'form-control input-sm' %>
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="form-group">
+				<%= g.label :businessphone, 'Business No.', class: 'pull-left control-label', style: 'text-align: left' %>
+				<%= g.text_field :businessphone, class: 'form-control input-sm' %>
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="form-group">
+				<%= g.label :homephone, 'Home Phone', class: 'pull-left control-label', style: 'text-align: left' %>
+				<%= g.text_field :homephone, class: 'form-control input-sm' %>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>
+<!-- end of form info -->
+<div class="modal-footer">
+	<div class="btn-group form-actions">
+		<!--%= link_to 'Back', @patient, class: 'btn btn-default' %-->
+		<%= f.button :submit, class: 'btn btn-default' %>
+	</div>
+</div>
+<% end %>
+
+<script type="text/javascript">
+$(function () {
+	// var appoint_date = '2015-09-03';
+
+	$('#patient_information_attributes_bday').datetimepicker({
+		format: 'YYYY-MM-DD'
+		// defaultDate: appoint_date
+	});
+
+	// $('#appointment_appointment_date').datetimepicker('update', new Date());
+});
+
+
+</script>

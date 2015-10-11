@@ -1,0 +1,22 @@
+$('#viewdialog').html("<%= escape_javascript(render 'edit_image') %>");
+
+$('#edit_image_patient_<%= params[:id] %>').submit(function(event) {
+	var form = $(this).parent('form');
+	var fd = new FormData();
+  	  fd.append("patient[image]", $('#patient_image')[0].files[0]);
+  	  $.ajax({
+  	  	type: 'PATCH',
+  	  	url: '/patient/<%= params[:id] %>/update_image',
+  	  	data: fd,
+  	  	processData: false,
+  	  	contentType: false,
+  	  	success: function(data){
+			   window.location.href='/patient/<%= params[:id] %>';
+  	  	},
+  	  	error: function(data){
+  	  		console.log(fd);
+          alert('error.');
+  	  	},
+  	  });
+	  	event.preventDefault();
+  	});

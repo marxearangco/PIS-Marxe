@@ -48,7 +48,7 @@
 }
 
 .wice-grid{
-
+  background-color: #fff;
 
   .desc,  .asc{
     padding-right: 18px;
@@ -139,13 +139,14 @@ input.wice-grid-save-query-field{
 }
 
 .wice-grid-title-row {
-  background-color: #eeeeee;
-  border-color: #eeeeee;
-  border: 1px solid transparent;
+  background-color: #fff;
+  /*border-color: #eeeeee;*/
+  border-top: 2px solid #DDDDDD;
+  border-bottom: 3px solid #FF4209;
   white-space: nowrap;
   
 }
 .wice-grid-title-row th a{
   text-decoration: none;
-  color: #d9534f;
+  color: #FF4209;
 }

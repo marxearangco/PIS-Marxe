@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  patient_id: 
+  appointment_id: 
+  bp: MyString
+  weight: 9.99
+  height: 9.99
+  date_gathered: 2015-10-08 21:44:56
+
+two:
+  patient_id: 
+  appointment_id: 
+  bp: MyString
+  weight: 9.99
+  height: 9.99
+  date_gathered: 2015-10-08 21:44:56

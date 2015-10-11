@@ -1,29 +1,35 @@
 PIS::Application.routes.draw do
-  get "appointment/index"
-  get "appointment/create"
-  get "appointment/update"
-  get "appointment/destroy"
-  get "appointment/new"
-  get "appointment/edit"
-  get "information/index"
-  get "information/show"
-  get "information/create"
-  get "information/update"
-  get "information/destroy"
-  get "information/nnew"
-  get "information/edit"
+  # get "appointment/index"
+  # get "appointment/create"
+  # get "appointment/update"
+  # get "appointment/destroy"
+  # get "appointment/new"
+  # get "appointment/edit"
+  # get "information/index"
+  # get "information/show"
+  # get "information/create"
+  # get "information/update"
+  # get "information/destroy"
+  # get "information/new"
+  # get "information/edit"
+  post "patient/create"
+  get "users/sign_out"
   devise_for :views
   devise_for :users
   # devise_for :appointments
-  resources :patients do
- 	  member do
-      resources :diagnosis
-      
+  resources :patient
+  resources :patient do
+    member do
+      # resources :diagnosis
+      resources :information
+      get "set_appointment"
+      post "update"
+      get "edit_image"
+      patch "update_image"
     end
   end
-  resources :information
   resources :appointment, as: 'appointments'
 
-  root 'patients#startup'
+  root 'patient#startup'
 
 end

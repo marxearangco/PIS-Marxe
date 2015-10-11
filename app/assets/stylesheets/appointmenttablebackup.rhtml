@@ -1,0 +1,26 @@
+<table id="tblappointment" class="table table-hover table-bordered">
+     <thead>
+      <tr>
+       <th>No.</th>
+       <th>Date</th>
+       <th>Patient</th>
+       <th>Purpose</th>
+       <th>Result</th>
+       <th>Remarks</th>
+   </tr>
+</thead>
+<tbody> 
+  <% i = 1 %>
+  <% @appointment.each do |app| %>
+  <tr id='<%= app.id %>' class='<%= app.patient_id %>' style="cursor:pointer"> 
+   <td><%= i %></td>
+   <td><%= app.appointment_date.strftime("%D") %></td>
+   <td><%= app.name %></td>
+   <td><%= truncate(app.purpose) %></td>
+   <td><%= app.result %></td>
+   <td><%= app.remarks %></td>
+ </tr> 
+ <% i += 1 %>
+ <% end %>
+ </tbody> 
+ </table>

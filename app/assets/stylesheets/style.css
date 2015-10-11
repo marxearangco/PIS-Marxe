@@ -194,9 +194,31 @@
     color: #FF4209;
     text-align: left;
     font-weight: bold;
+    height: 30px;
+    line-height: 1.5;
+    font-size: 14px;
+    padding: 3px 12px;
     /*border:none;*/
 
 }
+
+.iconheader {
+    color: #FF4209;
+    /*border:none;*/
+
+}
+.lbldates {
+    color: #FF4209;
+    /*text-align: left;*/
+    font-weight: bold;
+    /*height: 30px;*/
+    /*line-height: 1.5;*/
+    font-size: 12px;
+    /*padding: 3px 12px;*/
+    /*border:none;*/
+
+}
+
 input.input-sm {
     font-size: 14px;
     padding: 0px 12px;
@@ -208,6 +230,7 @@ div.btm-bord {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    padding: 10px 10px;
 }
 
 .btn-round.btn-lg {
@@ -238,4 +261,49 @@ div.btm-bord {
     border-radius:0px;
     opacity: 0.9;
     filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+
+.btn-orange{
+    background-color: #FF4209;
+    color: #fff;
+    disposition: block;
+}
+.btn-orange:hover{
+    background-color: #A52F0C;
+    color: #ffe;
+}
+
+.thumbnail {
+    position:relative;
+    overflow:hidden;
+}
+ 
+.caption {
+    position:absolute;
+    top:0;
+    right:0;
+    background: gray;
+    opacity: 0.5;
+    width:100%;
+    height:100%;
+    padding:2%;
+    display: none;
+    text-align:center;
+    color:#fff !important;
+    z-index:2;
+}
+
+.modal-header {
+    /*background-color: #0E0E29;*/
+    color: #0E0E29;
+    border-bottom-color: #FF4209;
+    border-bottom-width: 2px;
+
+
+}
+
+.panel-style .panel-heading{
+    background-color: #EEECC9;
+    color: #000;
+    border: 1px solid #EEECC9;
 }

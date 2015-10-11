@@ -20,3 +20,7 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'wice_grid', '~> 3.4.14'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.15.35'
+gem 'will_paginate'
+gem 'jquery-ui-rails'
+gem "font-awesome-rails"
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'

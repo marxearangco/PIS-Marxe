@@ -1,0 +1,26 @@
+<%= define_grid(@appointment) do |g|
+  g.row_attributes{ |appointment|
+    {:id => "#{appointment.id}", :class=> "#{appointment.patient_id}", :style=>"cursor: pointer"}
+  }
+	g.column name: 'ID', attribute: 'id', detach_with_id: :id_filter
+
+	g.column name: 'Date', attribute: 'appointment_date', detach_with_id: :date_filter do |d|
+		d.appointment_date.strftime("%D")
+	end
+
+	g.column name: 'Name', attribute: "lname", model: 'Patient', detach_with_id: :name_filter do |n|
+		n.patient.fullname
+	end
+
+	g.column name: 'Purpose', attribute: 'purpose', detach_with_id: :purpose_filter do  |p|
+		truncate(p.purpose)
+	end
+
+	g.column name: 'Result', attribute: 'result', detach_with_id: :result_filter 
+
+	g.column name: 'Remarks', attribute: 'remarks', detach_with_id: :remarks_filter
+
+
+end -%>
+
+

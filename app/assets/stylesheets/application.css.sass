@@ -9,10 +9,15 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require jquery-ui/core
+ *= require jquery-ui/theme
+ *= require dataTables//jquery.dataTables
  *= require_tree .
  */
 
 @import "bootstrap-sprockets"
 @import "bootstrap"
-@import 'bootstrap-datetimepicker'
+@import "bootstrap-datetimepicker"
+@import "font-awesome"
+@import "wice_grid"
 

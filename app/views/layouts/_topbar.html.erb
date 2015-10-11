@@ -10,25 +10,26 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <span class="navbar-brand" style="color: #F1EAEA"><b>Natural Complexions Inc.</b></span>
+      <span class="navbar-brand" style="color: #F1EAEA"><b><%= image_tag 'NCI.png', style: 'height: 30px; width: 45px' %> Natural Complexions Inc.</b></span>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navcollapse">
       <ul class="nav nav-pills navbar-nav navbar-right">
+        <% if user_signed_in? %>
         <li class="<%= 'active' if request.path=='/' %>"><%= link_to 'Home', root_path %></li>
-        <li class="<%= 'active' if request.path=='/patients' or request.path == '/patients/' + params[:id].to_s %>"><%= link_to 'Patients', patients_path %></li>
+        <li class="<%= 'active' if request.path=='/patient' or request.path == '/patient/' + params[:id].to_s %>"><%= link_to 'Patients', patient_index_path %></li>
         <li class="<%= 'active' if request.path=='/appointment' %>"><%= link_to raw("Appointments<span class='badge'>#{@appcount}</span>"), appointments_path, data: {toogle: 'pill'} %></li>
         <li><a href="#" data-toggle='pill'>Search</a></li>
-        <% if user_signed_in? %>
-          <li><%= link_to('Logout', destroy_user_session_path, :method => :delete, data: { confirm: "Are you sure You want to Logout?" } ) %></li>
+          <li><%= link_to('Logout', destroy_user_session_path, :method => :delete, data: { confirm: "Are you sure you want to Logout?" } ) %></li>
         <% else %>
-          <li><%= link_to('Login', new_user_session_path) %></li>
+          <li class="<%= 'active' if request.path=='/users/sign_in' %>"><%= link_to 'Login', new_user_session_path, data: { toogle: 'pill' } %></li>
+          <li class="<%= 'active' if request.path=='/users/sign_up' %>"><%= link_to 'Sign up', new_user_registration_path, data: {toogle: 'pill'} %></li>
         <% end %>
-        
+      </ul>
     </div><!-- /.navbar-collapse -->
    </div><!-- /.row -->
   </div><!-- /.container-fluid -->
   <div style="height: 5px; background-color: #FF4209">
-</div>
+  </div>
 </nav>  

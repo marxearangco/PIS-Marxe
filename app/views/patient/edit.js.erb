@@ -1,0 +1,31 @@
+$('#viewdialog').html("<%= escape_javascript(render 'edit') %>");
+$('#edit_patient_<%= params[:id] %>').submit(function(event) {
+	
+	var form = $(this).parent('form');
+	var fd = new FormData();
+  	  // fd.append("image[code]", '<%= params[:id] %>');
+  	  fd.append("patient[image]", $('#patient_image')[0].files[0]);
+  	  fd.append("patient[fname]", $('#patient_fname').val());
+  	  fd.append("patient[lname]", $('#patient_lname').val());
+  	  fd.append("patient[mi]", $('#patient_mi').val());
+  	  fd.append("patient[address]", $('#patient_address').val());
+
+  	  $.ajax({
+  	  	type: 'POST',
+  	  	url: '/patient/<%= params[:id] %>/update',
+  	  	// url: form.action(),
+  	  	data: fd,
+  	  	processData: false,
+  	  	contentType: false,
+  	  	success: function(data){
+			   window.location.href='/patient/<%= params[:id] %>';
+  	  	},
+  	  	error: function(data){
+  	  		console.log(fd);
+          alert('error.');
+  	  	},
+  	  });
+	  	event.preventDefault();
+
+
+  	});

@@ -13,9 +13,10 @@
 //= require turbolinks
 //= require jquery
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
 //= require bootstrap-sprockets
 //= require moment
-//= require bootstrap-datetimepicker
 //= require wice_grid
+//= require bootstrap-datetimepicker
 //= require_tree .
 

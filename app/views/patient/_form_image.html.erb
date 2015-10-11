@@ -1,0 +1,13 @@
+<%= simple_form_for @patient, url: update_image_patient_path, wrapper: :pis_form, wrapper_mappings: { pis: :pis_form, file: :vertical_file_input, mi: :pis_form_small } do |f| %>
+	<div class="row">
+		<div class="col-xs-9">
+		Choose Picture
+		<%= f.file_field :image, required: true, class: 'form-control' %>
+		</div>
+	</div>
+	<br />
+	
+<div class="modal-footer">
+	<%= f.button :submit, value:'Update', class: 'btn btn-default lblinfo' %>
+</div>
+<% end %>
