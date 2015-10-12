@@ -294,8 +294,9 @@ div.btm-bord {
 }
 
 .modal-header {
-    /*background-color: #0E0E29;*/
-    color: #0E0E29;
+    background-color: #0E0E29;
+    color: #fff;
+    /*color: #0E0E29;*/
     border-bottom-color: #FF4209;
     border-bottom-width: 2px;
 

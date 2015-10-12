@@ -17,8 +17,8 @@ class PatientController < ApplicationController
  end
 
  def new
- 	# @patient = current_user.patient.build
-  @patient = Patient.new
+ 	@patient = current_user.patient.build
+  #@patient = Patient.new
   @patient.build_information
  end
 

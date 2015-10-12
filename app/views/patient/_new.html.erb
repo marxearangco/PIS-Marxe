@@ -1,35 +1,36 @@
 <div class="modal-header">
-	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	<span style="font-size: 16px"><b>New Patient</b></span>
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<span aria-hidden="true">&times;</span></button>
+	<span style="font-size: 16px">New Patient</span>
 </div>
 <div class="modal-body">
-	<%= simple_form_for @patient, url: patient_create_path, :method=> 'Post', wrapper: :pis_form, wrapper_mappings: { pis: :pis_form, file: :vertical_file_input, mi: :pis_form_small } do |f| %>
+	<%= simple_form_for @patient, url: patient_create_path, wrapper: :pis_form, wrapper_mappings: { pis: :pis_form, file: :vertical_file_input, mi: :pis_form_small } do |f| %>
 	<div class="row">
 		<div class="col-xs-9">
-			Choose Picture
-			<%= f.file_field :image, class: 'form-control' %>
+			<%= f.label 'Choose Picture', nil, class: 'control-label', style: 'text-align: left' %>
+			<%= f.file_field :image, class: 'form-control input-sm' %>
 		</div>
 	</div>
 	<br /> 
 	<div class="row">
 		<div class="col-xs-4">
-			First Name
-			<%= f.text_field :fname, class: 'form-control' %>
+			<%= f.label 'First Name', nil, class: 'control-label', style: 'text-align: left' %>
+			<%= f.text_field :fname, class: 'form-control input-sm' %>
 		</div>
 		<div class="col-xs-4">
-			Middle Name
-			<%= f.text_field :mi, class: 'form-control' %>
+			<%= f.label 'Middle Name', nil, class: 'control-label', style: 'text-align: left' %>
+			<%= f.text_field :mi, class: 'form-control input-sm' %>
 		</div>
 		<div class="col-xs-4">
-			Last Name
-			<%= f.text_field :lname, class: 'form-control' %>
+			<%= f.label 'Last Name', nil, class: 'control-label', style: 'text-align: left' %>
+			<%= f.text_field :lname, class: 'form-control input-sm' %>
 		</div>
 	</div>
 	<br />
 	<div class="row">
-		<div class="col-xs-12">
-			Address:
-			<%= f.text_area :address, class: 'form-control' %>
+		<div class="col-xs-12" rowspan="1">
+			<%= f.label 'Address', nil, class: 'control-label', style: 'text-align: left' %>
+			<%= f.text_area :address, class: 'form-control input-sm' %>
 		</div>
 	</div>
 	
@@ -81,10 +82,10 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-6">
-			<%= g.label :referredby, 'Referred by', class: 'pull-left control-label', style: 'text-align: left' %>
-			<%= g.text_field :referredby, class: 'form-control input-sm' %>
-		</div>
-		<div class="col-xs-6">
+			<div class="form-group">
+				<%= g.label :referredby, 'Referred by', class: 'pull-left control-label', style: 'text-align: left' %>
+				<%= g.text_field :referredby, class: 'form-control input-sm' %>
+			</div>
 		</div>
 	</div>
 	<div class="row">
