@@ -1,27 +1,27 @@
 <div class="show-panel">
-    <div class="col-xs-9">
-        <h1>Today's Appointments</h1>
-        <h5><%= Time.now.strftime("%A - %B %d, %Y ") %></h5>
+  <div class="col-xs-9">
+    <h1>Today's Appointments</h1>
+    <h5><%= Time.now.strftime("%A - %B %d, %Y ") %></h5>
+  </div>
+  <div class="col-xs-3 pull-right">
+    <div class="pull-right">
+      <br>    <%= link_to raw('<span class="glyphicon glyphicon-hand-right"></span> Set Appointment'), new_appointment_path, class: 'btn btn-default btn-sm', remote: true, data: { toggle: 'modal', target: "#appointment"}, title: 'Set Appointment' %>
     </div>
-    <div class="col-xs-3 pull-right">
-        <div class="pull-right">
-            <br>    <%= link_to raw('<span class="glyphicon glyphicon-hand-right"></span> Set Appointment'), new_appointment_path, class: 'btn btn-default btn-sm', remote: true, data: { toggle: 'modal', target: "#appointment"}, title: 'Set Appointment' %>
-        </div>
-    </div>
+  </div>
 
-    
-    <table id="tblappointment" class="table table-hover">
-     <thead>
-      <tr>
-       <th>No.</th>
-       <th>Date</th>
-       <th>Patient</th>
-       <th>Purpose</th>
-       <th>Result</th>
-       <th>Remarks</th>
+
+  <table id="tblappointment" class="table table-hover">
+   <thead>
+    <tr>
+     <th>No.</th>
+     <th>Date</th>
+     <th>Patient</th>
+     <th>Purpose</th>
+     <th>Result</th>
+     <th>Remarks</th>
    </tr>
-</thead>
-<tbody>
+ </thead>
+ <tbody>
   <% i = 1 %>
   <% @appointment.each do |app| %>
   <tr id='<%= app.id %>' class='<%= app.patient_id %>' style="cursor:pointer">
@@ -31,9 +31,9 @@
    <td><%= truncate(app.purpose) %></td>
    <td><%= app.result %></td>
    <td><%= app.remarks %></td>
-</tr>
-<% i += 1 %>
-<% end %>
+ </tr>
+ <% i += 1 %>
+ <% end %>
 </tbody>
 </table>
 <br />
@@ -47,60 +47,60 @@
     <div class="modal-content">
       <div id="appointment_content">
       </div>
+    </div>
   </div>
-</div>
 </div>	
 
 <ul id="contextMenu" class="dropdown-menu" role="menu" style="display:none" >
-    <li><%= link_to raw("<span class='glyphicon glyphicon-pencil'></span> Edit"), "#", remote: true, data: { toggle: 'modal', target: "#appointment" }, title: 'Edit Appointment', id: 'm_edit' %></li>
-    <li><%= link_to raw("<span class='glyphicon glyphicon-user'></span> Patient Info"), "#", title: 'View Patient Info', id: 'm_view' %></li>
-    <li><%= link_to raw("<span class='glyphicon glyphicon-trash'></span> Delete"), "#", method: :delete, data: { confirm: "Remove appointment?" }, title: 'Remove Appointment', id: 'm_delete' %></li>
+  <li><%= link_to raw("<span class='glyphicon glyphicon-pencil'></span> Edit"), "#", remote: true, data: { toggle: 'modal', target: "#appointment" }, title: 'Edit Appointment', id: 'm_edit' %></li>
+  <li><%= link_to raw("<span class='glyphicon glyphicon-user'></span> Patient Info"), "#", title: 'View Patient Info', id: 'm_view' %></li>
+  <li><%= link_to raw("<span class='glyphicon glyphicon-trash'></span> Delete"), "#", method: :delete, data: { confirm: "Remove appointment?" }, title: 'Remove Appointment', id: 'm_delete' %></li>
 </ul>
 <script type="text/javascript">
 (function ($, window) {
-    $.fn.contextMenu = function (settings) {
-        return this.each(function () {
-            $(this).on("contextmenu", function (e) {
-                if (e.ctrlKey) return;
-                var pId = this.id;
-                var cId = $(this).attr("class");
-                $("#m_edit").attr("href","appointment/"+pId);
-                $("#m_view").attr("href","patients/"+cId);
-                $("#m_delete").attr("href","appointment/"+pId);
-                var $menu = $(settings.menuSelector)
-                .data("invokedOn", $(e.target))
-                .show()
-                .css({
-                    position: "absolute",
-                    left: getMenuPosition(e.clientX, 'width', 'scrollLeft'),
-                    top: getMenuPosition(e.clientY, 'height', 'scrollTop')
-                })
-                .off('click')
-                .on('click', 'a', function (e) {
-                    $menu.hide();
-                    var $invokedOn = $menu.data("invokedOn");
-                    var $selectedMenu = $(e.target);
+  $.fn.contextMenu = function (settings) {
+    return this.each(function () {
+      $(this).on("contextmenu", function (e) {
+        if (e.ctrlKey) return;
+        var pId = this.id;
+        var cId = $(this).attr("class");
+        $("#m_edit").attr("href","appointment/"+pId);
+        $("#m_view").attr("href","patients/"+cId);
+        $("#m_delete").attr("href","appointment/"+pId);
+        var $menu = $(settings.menuSelector)
+        .data("invokedOn", $(e.target))
+        .show()
+        .css({
+          position: "absolute",
+          left: getMenuPosition(e.clientX, 'width', 'scrollLeft'),
+          top: getMenuPosition(e.clientY, 'height', 'scrollTop')
+        })
+        .off('click')
+        .on('click', 'a', function (e) {
+          $menu.hide();
+          var $invokedOn = $menu.data("invokedOn");
+          var $selectedMenu = $(e.target);
                         // settings.menuSelected.call(this, $invokedOn, $selectedMenu,$patID);
-                    });
-                
-                return false;
-            });
+                      });
 
-$(document).click(function () {
-    $(settings.menuSelector).hide();
-});
-});
+        return false;
+      });
+
+      $(document).click(function () {
+        $(settings.menuSelector).hide();
+      });
+    });
 
 function getMenuPosition(mouse, direction, scrollDir) {
-    var win = $(window)[direction](),
-    scroll = $(window)[scrollDir](),
-    menu = $(settings.menuSelector)[direction](),
-    position = mouse + scroll;
-    
-    if (mouse + menu > win && menu < mouse) 
-        position -= menu;
-    
-    return position;
+  var win = $(window)[direction](),
+  scroll = $(window)[scrollDir](),
+  menu = $(settings.menuSelector)[direction](),
+  position = mouse + scroll;
+
+  if (mouse + menu > win && menu < mouse) 
+    position -= menu;
+
+  return position;
 }    
 
 };
@@ -108,15 +108,15 @@ function getMenuPosition(mouse, direction, scrollDir) {
 
 
 $("#tblappointment tr").contextMenu({
-    menuSelector: "#contextMenu",
-    menuSelected: function (invokedOn, selectedMenu, patID) {
-        var msg = "You selected the menu item '" + selectedMenu.text() +
-        "' on the value '" + invokedOn.text() + patId +"'";
+  menuSelector: "#contextMenu",
+  menuSelected: function (invokedOn, selectedMenu, patID) {
+    var msg = "You selected the menu item '" + selectedMenu.text() +
+    "' on the value '" + invokedOn.text() + patId +"'";
         // var pid = $("#tblpatients tr").id();
         //   $("#view").attr("href").val("patients/")
         alert(msg);
-    }
-});
+      }
+    });
 </script>
 <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/jqueryui/dataTables.jqueryui.js">
@@ -125,17 +125,15 @@ $("#tblappointment tr").contextMenu({
 <link rel="stylesheet" href="https://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/jqueryui/dataTables.jqueryui.css">
 <script type="text/javascript">
 $(document).ready(function(){
-
-  $('#tblappointment').DataTable({
-    sPaginationType: "full_numbers",
-    bJqueryUI: true
-    // sDom: '<"H"Tl>tS<"F"ip>'
+  $("tr").click(function() {
+    window.location = $(this).data("link");
   });
 
-  // $("tr").click(function() {
-  //   window.location = $(this).data("link");
-  // });
+  $('#tblappointment').DataTable({
+    destroy: true,
+    sPaginationType: "full_numbers",
+    bJqueryUI: true,
+    // sDom: '<"H"Tl>tS<"F"ip>'
+  });
 });
-
-
 </script>
