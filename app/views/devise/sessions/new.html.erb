@@ -1,6 +1,6 @@
-<div class="modal-dialog modal-sm" style="border: 1px solid gray">
-    <div class="modal-header">
-        <span class="text-center"><strong><span class="glyphicon glyphicon-lock"></span> PLEASE LOGIN</strong></span>
+<div class="modal-dialog modal-sm" style="border: 1px solid gray; background-color: #fff; color: #0E0E29">
+    <div class="modal-header" style="background-color: #fff; color: #0E0E29">
+        <span class="text-center" style="font-size: 1.2em"><strong><span class="glyphicon glyphicon-lock"></span> PLEASE LOGIN</span></strong>
     </div>
     <div class="modal-body">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-signin"}) do |f| %>
@@ -17,12 +17,13 @@
         <% if devise_mapping.rememberable? -%>
         <label>
           <%= f.check_box :remember_me, label: false %>
-          Remember me
+          <small>Remember me</small>
       </label>
       <% end -%>
       <br/>
 
       <%= f.button "Sign in", class: 'btn btn-orange btn-block' %>
+      <br>
       <%= render "devise/shared/links" %>
       <% end %>
 

@@ -83,7 +83,7 @@ class PatientController < ApplicationController
  	@patient.destroy
  	Information.find(@patient).destroy
  	flash[:alert]="<big><span class='glyphicon glyphicon-trash'></span></big> Patient information removed..."
- 	render 'index'
+ 	redirect_to '/patient'
  end
 
  def logout

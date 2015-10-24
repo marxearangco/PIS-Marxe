@@ -14,6 +14,7 @@ PIS::Application.routes.draw do
   # get "information/edit"
   post "patient/create"
   get "users/sign_out"
+  get "welcome/new"
   devise_for :views
   devise_for :users
   # devise_for :appointments

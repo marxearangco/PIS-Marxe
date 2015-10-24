@@ -1,6 +1,6 @@
-<div class="modal-header btn-default">
-  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <span style="font-size: 16px"><b>Set Appointment</b></span>
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color: #fff" aria-hidden="true">&times;</span></button>
+  <span style="font-size: 16px">Set Appointment</span>
 </div>
 <div class="modal-body">
 <%= simple_form_for (@appointment), wrapper: :pis_form, wrapper_mappings: { pis: :pis_form, file: :vertical_file_input, mi: :pis_form_small } do |f| %>

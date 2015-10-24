@@ -1,15 +1,18 @@
- <div id="sidebar-wrapper">
-    <ul class="sidebar-nav">
-        
-        <li>
-            Search
-        </li>
-        <li>
-            <input type="text" class="btn">
-        </li>
-        <li>
-            <button class="btn">Go</button>
-        </li>
-        
-    </ul>
+ <div class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      Patients
+    </h3>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <i class="fa fa-stethoscope fa-xs"></i> No of Patients
+    </li>
+    <li class="list-group-item">
+      <%= link_to raw('<i class="fa fa-plus fa-sm"></i> Add Patient'), new_patient_path, remote: true, data: { toggle: 'modal', target: "#view" } %>
+    </li>
+    <li class="list-group-item">
+      <i class="fa fa-user-md fa-xs"></i> Doctor(s)
+    </li>
+  </ul>
 </div>

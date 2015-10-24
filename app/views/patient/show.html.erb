@@ -19,12 +19,13 @@
 				</div>
 				<div class="col col-sm-10">
 					<div class="row">
-						<p style="font-size:25px; font-weight: normal; color: #FF4209"><%= @patient.lname + ', ' + @patient.fname + ' ' + @patient.mi  %>
-							<span class="pull-right", style="margin-right: 10px">
-								<%= link_to raw('<i class="glyphicon glyphicon-pencil"></i>'), edit_patient_path(@patient), class: 'lblinfo', remote: true, data: { toggle: 'modal', target: "#view" }, title: 'Edit Basic Info' %>
-								<%= link_to raw("<i class='glyphicon glyphicon-edit'></i>"), set_appointment_patient_path(@patient.id), remote: true, data: {toggle: 'modal', target: '#appointment'}, class: 'lblinfo', title: 'Set Appointment' %>
-								<%= link_to raw('<i class="glyphicon glyphicon-trash"></i>'), patient_path(@patient), method: :delete, class: 'lblinfo',  data: { confirm: 'Are you sure you want to delete this patient?'}, title: 'Delete Patient' %>
-
+						<p>
+						<span style="font-size:25px; font-weight: normal; color: #FF4209"><%= @patient.lname + ', ' + @patient.fname + ' ' + @patient.mi  %></span>
+							<span class="btn btn-group pull-right" style="margin-right: 10px;">
+								<%= link_to raw("<i class='glyphicon glyphicon-th-list'></i>"), patient_index_path, class: 'btn btn-default', title: 'Back to Lists' %>
+								<%= link_to raw('<i class="glyphicon glyphicon-pencil"></i>'), edit_patient_path(@patient), class: 'btn btn-default', remote: true, data: { toggle: 'modal', target: "#view" }, title: 'Edit Basic Info' %>
+								<%= link_to raw("<i class='glyphicon glyphicon-edit'></i>"), set_appointment_patient_path(@patient.id), class: 'btn btn-default', remote: true, data: {toggle: 'modal', target: '#appointment'}, title: 'Set Appointment' %> 
+								<%= link_to raw('<i class="glyphicon glyphicon-trash"></i>'), patient_path(@patient), method: :delete,  class: 'btn btn-default', data: { confirm: 'Are you sure you want to delete this patient?'}, title: 'Delete Patient' %>
 							</span>
 						</p>
 						<p><%= @patient.address %></p>
@@ -45,18 +46,17 @@
 			<div class="panel-body">
 				<span style="font-size:18px;"><i class="fa fa-street-view fa-lg iconheader"></i> <strong>Personal Information</strong></span>
 				<span class="pull-right">
-					<div class="btn-group">
-						<a class="lblinfo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor:pointer">
+					<div>
+						<!-- <a class="lblinfo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor:pointer">
 							<span class="glyphicon glyphicon-chevron-down"></span>
-							<!-- <span class="caret"></span> -->
-						</a>
-						<ul class="dropdown-menu">
-							<li><%= link_to raw("<span class='glyphicon glyphicon-pencil'></span> Edit"), '#', class: 'lblinfo', id: 'infox', title: 'Edit Patient' %></li>
+							<span class="caret"></span>
+						</a> -->
+						<!-- <ul class="dropdown-menu"> -->
+							<!-- <li> -->
+								<%= link_to raw("<span class='glyphicon glyphicon-pencil'></span> Edit"), '#', class: 'lblinfo', id: 'infox', title: 'Edit Patient' %>
+							<!-- </li> -->
 							<!-- <li role="separator" class="divider"></li> -->
-							<li>
-								<%= link_to raw("<i class='glyphicon glyphicon-th-list'></i> Lists"), patient_index_path, class: 'lblinfo', title: 'Back to Lists' %>
-							</li>
-						</ul>
+						<!-- </ukl> -->
 					</div>
 				</span>
 			</div>
@@ -133,10 +133,10 @@
 		</div>
 		<div class="panel panel-default panel-style">
 			<div class="panel-body">
-				<span style="font-size:18px; "><i class="fa fa-line-chart fa-lg iconheader"></i> <strong>Patient History</strong></span>
+				<span style="font-size:18px; "><i class="fa fa-line-chart fa-lg iconheader"></i> <strong>Appointment History</strong></span>
 			</div>
 			<div class="panel-body">
-				<table class="table table-hover table-bordered">
+				<table class="table table-hover table-responsive">
 					<thead style="border:0 50px 0 0">
 						<tr>
 							<th>#</th>
@@ -161,7 +161,15 @@
 					</tbody>
 				</table>
 			</div>
-		</div>	
+		</div>
+		<div class="panel panel-default panel-style">
+			<div class="panel-body">
+				<span style="font-size:18px; "><i class="fa fa-line-chart fa-lg iconheader"></i> <strong>Statistics</strong></span>
+			</div>
+			<div class="panel-body">
+			
+			</div>
+		</div>		
 	</div>
 </div>	
 <% end %>
@@ -179,6 +187,7 @@ $(document).ready(function(){
 	$('#infox').click(function(){
 		// $('#show').hide();
 		$('#show').html("<%= escape_javascript(render 'forminfo') %>");
+		$('#infox').hide();
 		// $('#show').fadeIn();
 	});
 

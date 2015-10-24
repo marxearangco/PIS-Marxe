@@ -5,6 +5,10 @@
  */
 
 /* Toggle Styles */
+html {
+    overflow-y:scroll;
+}
+
 * {font-family: "OpenSans", Sans-serif}
 #wrapper {
     padding-left: 0;

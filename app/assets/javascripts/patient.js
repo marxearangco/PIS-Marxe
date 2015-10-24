@@ -17,10 +17,10 @@ $('.thumbnail').hover(
 // //         bServerSide: true
 // //         sAjaxSource: $('#tblpatients').data('source')
 
-jQuery(function($) {
+// jQuery(function($) {
 $('#tblpatients').DataTable({
 	sPaginationType: "full_numbers",
-	bJqueryUI: true
+	bJqueryUI: true,
 	});
   // ajax: ...,
   // autoWidth: false,
@@ -30,4 +30,4 @@ $('#tblpatients').DataTable({
   // Optional, if you want full pagination controls.
   // Check dataTables documentation to learn more about available options.
   // http://datatables.net/reference/option/pagingType
-});
+// });
