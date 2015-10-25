@@ -22,7 +22,7 @@
 						<p>
 						<span style="font-size:25px; font-weight: normal; color: #FF4209"><%= @patient.lname + ', ' + @patient.fname + ' ' + @patient.mi  %></span>
 							<span class="btn btn-group pull-right" style="margin-right: 10px;">
-								<%= link_to raw("<i class='glyphicon glyphicon-th-list'></i>"), "/patient", class: 'btn btn-default', title: 'Back to Lists' %>
+								<%= link_to raw("<i class='fa fa-reply'></i>"), "/patient", class: 'btn btn-default', title: 'Back to Lists' %>
 								<%= link_to raw('<i class="glyphicon glyphicon-pencil"></i>'), edit_patient_path(@patient), class: 'btn btn-default', remote: true, data: { toggle: 'modal', target: "#view" }, title: 'Edit Basic Info' %>
 								<%= link_to raw("<i class='glyphicon glyphicon-edit'></i>"), set_appointment_patient_path(@patient.id), class: 'btn btn-default', remote: true, data: {toggle: 'modal', target: '#appointment'}, title: 'Set Appointment' %> 
 								<%= link_to raw('<i class="glyphicon glyphicon-trash"></i>'), patient_path(@patient), method: :delete,  class: 'btn btn-default', data: { confirm: 'Are you sure you want to delete this patient?'}, title: 'Delete Patient' %>
@@ -137,7 +137,7 @@
 			</div>
 			<div class="panel-body">
 				<table class="table table-hover table-responsive">
-					<thead style="border:0 50px 0 0">
+					<thead>
 						<tr>
 							<th>#</th>
 							<th>Date</th>
@@ -164,7 +164,7 @@
 		</div>
 		<div class="panel panel-default panel-style">
 			<div class="panel-body">
-				<span style="font-size:18px; "><i class="fa fa-line-chart fa-lg iconheader"></i> <strong>Statistics</strong></span>
+				<span style="font-size:18px; "><i class="fa fa-bar-chart fa-lg iconheader"></i> <strong>Statistics</strong></span>
 			</div>
 			<div class="panel-body">
 			

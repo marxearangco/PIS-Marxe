@@ -12,6 +12,7 @@ PIS::Application.routes.draw do
   # get "information/destroy"
   # get "information/new"
   # get "information/edit"
+  get "appointment/calendar"
   post "patient/create"
   get "users/sign_out"
   get "welcome/new"

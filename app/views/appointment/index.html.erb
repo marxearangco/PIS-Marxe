@@ -10,7 +10,7 @@
       </div>
     </div>
   </div>
-  <table id="tblappointment" class="table table-hover">
+  <table id="tblappointment" class="table table-hover table-condensed">
    <thead>
     <tr>
      <th>No.</th>
@@ -24,7 +24,7 @@
  <tbody>
   <% i = 1 %>
   <% @appointment.each do |app| %>
-  <tr data-link="<%= appointment_path(app.id) %>" id="<%= app.id %>" data-remote="true" data-toggle="modal" data-target="#appointment" class="appointment_info" style="cursor:pointer">
+  <tr data-link="<%= appointment_path(app.id) %>" id="<%= app.patient_id %>" style="cursor:pointer" data-toggle="tooltip" data-placement="bottom" title="Right click for options.">
    <td><%= i %></td>
    <td><%= app.appointment_date.strftime("%D") %></td>
    <td><%= app.name %></td>
@@ -59,11 +59,12 @@
     return this.each(function () {
       $(this).on("contextmenu", function (e) {
         if (e.ctrlKey) return;
-        var pId = this.id;
-        var cId = $(this).attr("class");
-        $("#m_edit").attr("href","appointment/"+pId);
-        $("#m_view").attr("href","patients/"+cId);
-        $("#m_delete").attr("href","appointment/"+pId);
+        // var pId = this.id;
+        // var cId = $(this).attr("class");
+        var cId = this.id;
+        $("#m_edit").attr("href",$(this).data("link"));
+        $("#m_view").attr("href","patient/"+cId);
+        $("#m_delete").attr("href",$(this).data("link"));
         var $menu = $(settings.menuSelector)
         .data("invokedOn", $(e.target))
         .show()
@@ -122,9 +123,10 @@ $("#tblappointment tr").contextMenu({
 <link rel="stylesheet" href="https://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/jqueryui/dataTables.jqueryui.css"> -->
 <script type="text/javascript">
 $(document).ready(function(){
-  $("tr").click(function() {
-    window.location = $(this).data("link");
-  });
+  // $("tr").click(function() {
+  //   window.location = $(this).data("link");
+  // });
+  $('[data-toggle="tooltip"]').tooltip();
 
   $('#tblappointment').DataTable({
     bdestroy: true,

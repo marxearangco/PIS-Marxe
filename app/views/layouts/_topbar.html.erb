@@ -17,13 +17,25 @@
     <div class="collapse navbar-collapse" id="navcollapse">
       <ul class="nav nav-pills navbar-nav navbar-right">
         <% if user_signed_in? %>
-        <li class="<%= 'active' if request.path=='/' %>"><%= link_to 'Home', root_path %></li>
-        <li class="<%= 'active' if request.path=='/patient' or request.path == '/patient/' + params[:id].to_s %>"><%= link_to 'Patients', patient_index_path %></li>
-        <li class="<%= 'active' if request.path=='/appointment' %>"><%= link_to raw("Appointments<span class='badge'>#{@appcount}</span>"), appointments_path, data: {toogle: 'pill'} %></li>
-        <li><a href="#" data-toggle='pill'>Search</a></li>
-          <li><%= link_to('Logout', destroy_user_session_path, :method => :delete, data: { confirm: "Are you sure you want to Logout?" } ) %></li>
+        <li class="<%= 'active' if request.path=='/' %>">
+          <%= link_to raw('<span class="fa fa-home fa-lg"></span>'), root_path %>
+        </li>
+        <li class="<%= 'active' if request.path=='/patient' or request.path == '/patient/' + params[:id].to_s %>">
+          <%= link_to raw('<span class="fa fa-user-md fa-lg"></span>'), patient_index_path %>
+        </li>
+        <li class="<%= 'active' if request.path=='/appointment' %>">
+          <%= link_to raw("<span class='fa fa-tasks fa-lg'></span><span class='badge'>#{@appcount}</span>"), appointments_path, data: {toogle: 'pill'} %>
+        </li>
+        <li>
+          <a href="#" data-toggle='pill'><span class="fa fa-search fa-lg"></span></a>
+        </li>
+        <li>
+          <%= link_to raw('<span class="fa fa-sign-out fa-lg"></span>'), destroy_user_session_path, :method => :delete, data: { confirm: "Are you sure you want to Logout?" } %>
+        </li>
         <% else %>
-          <li class="<%= 'active' if request.path=='/users/sign_in' %>"><%= link_to 'Login', new_user_session_path, data: { toogle: 'pill' } %></li>
+          <li class="<%= 'active' if request.path=='/users/sign_in' %>">
+            <%= link_to 'Login', new_user_session_path, data: { toogle: 'pill' } %>
+          </li>
           <!-- <li class="<%#= 'active' if request.path=='/users/sign_up' %>"><%#= link_to 'Sign up', new_user_registration_path, data: {toogle: 'pill'} %></li> -->
         <% end %>
       </ul>
