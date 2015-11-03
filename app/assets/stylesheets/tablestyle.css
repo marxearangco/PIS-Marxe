@@ -94,3 +94,13 @@
 .tablestyle tr:first-child td:last-child{
   border-width:0px 0px 1px 1px;
 }
+
+table#tblpatients {
+  border-left: 1px solid #aaaaaa;
+  border-right: 1px solid #aaaaaa;
+}
+
+table#tblappointment {
+  border-left: 1px solid #aaaaaa;
+  border-right: 1px solid #aaaaaa;
+}

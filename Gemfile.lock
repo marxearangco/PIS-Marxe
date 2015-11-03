@@ -65,6 +65,9 @@ GEM
     execjs (2.5.2)
     font-awesome-rails (4.3.0.0)
       railties (>= 3.2, < 5.0)
+    fullcalendar-rails (2.4.0.0)
+      jquery-rails (>= 3.1.1, < 5.0.0)
+      momentjs-rails (>= 2.9.0)
     hike (1.2.3)
     httparty (0.13.7)
       json (~> 1.8)
@@ -175,6 +178,7 @@ DEPENDENCIES
   coffee-script-source (= 1.8.0)
   devise (~> 3.5.1)
   font-awesome-rails
+  fullcalendar-rails
   jbuilder (~> 1.2)
   jquery-datatables-rails!
   jquery-rails

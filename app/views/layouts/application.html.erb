@@ -31,10 +31,23 @@
     </div>
   </div>
 </div>
-<script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/jqueryui/dataTables.jqueryui.js">
+<script>
+
+$('#search').click(function(){
+  $('#search').popover();
+})
 </script>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/darkness/jquery-ui.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/jqueryui/dataTables.jqueryui.css">
+
+<%= javascript_include_tag "jquery.dataTables.min" %>
+<%= javascript_include_tag "dataTables.jqueryui" %>
+
+<!--%= javascript_include_tag "dataTables.jqueryui" %-->
+<%= stylesheet_link_tag "smoothness" %>
+<%= stylesheet_link_tag "dataTables.jqueryui" %>
+
+<!-- <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script> -->
+<!-- <script src="https://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/jqueryui/dataTables.jqueryui.js"></script> -->
+<!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"> -->
+<!-- <link rel="stylesheet" href="https://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/jqueryui/dataTables.jqueryui.css"> -->
 </body>
 </html>

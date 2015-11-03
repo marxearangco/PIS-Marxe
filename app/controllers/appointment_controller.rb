@@ -3,7 +3,11 @@ class AppointmentController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @appointment = Appointment.select('appointments.*, concat(a.lname,", ",a.fname, " ",a.mi) as name').joins('Left join patients a on appointments.patient_id=a.id').order(:appointment_date)
+    @appointment = Appointment.select('appointments.*, concat(a.lname,", ",a.fname, " ",left(a.mi,1),".") as name')
+                  .joins('Left join patients a on appointments.patient_id=a.id')
+                  # .where(:appointment_date=> Date.today)
+                  # .order(:appointment_date)
+
     # @appointment = initialize_grid(Appointment,
     #   include: :patient,
     #   #conditions: {:patient_id=>'5'},
@@ -16,12 +20,26 @@ class AppointmentController < ApplicationController
     @appointment.user_id = current_user.id
     if @appointment.save
       flash[:alert]="<big><span class='glyphicon glyphicon-book'></span></big> Appointment added."
-      redirect_to appointments_path
+      if current_user.role=="patient"
+        redirect_to patient_path(@appointment.patient_id)
+      else
+        redirect_to appointments_path
+      end
     else
       flash[:error]="<big><span class='glyphicon glyphicon-book'></span></big> Appointment not added."
       render 'new'
     end
   end
+
+  def calendar
+    @appointment = Appointment.select('concat(lname,", ",fname," ", left(mi,1),".") as title, appointment_date as start, patient_id').joins('left join patients on appointments.patient_id = patients.id')
+    @ev = ""
+    @events = "" 
+    @appointment.each do |e|
+      @ev << "{ title : '#{e.title}', start : '#{e.start.strftime("%F")}', url: '/patient/#{e.patient_id}'},"
+    end
+    @events << "[" << @ev.chop << "]"
+  end  
 
   def update
     if @appointment.update(appointment_params)

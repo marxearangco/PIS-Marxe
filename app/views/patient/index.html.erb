@@ -1,35 +1,35 @@
 <div class="show-panel">
+  <br />
+
   <div class="row">
-    <div class="col-xs-2 hidden-sm hidden-xs" style="height: 500px; border: 1px solid #eeeeee; border-radius: 5px">
-      <br />
+    <div class="col-xs-12 col-sm-10 col-md-2 col-lg-2">  <!-- style="height: 500px; border: 1px solid #eeeeee; border-radius: 5px" -->
       <%= render 'layouts/sidebar' %>
     </div>
-    <div class="pull-right col-xs-10">
-      <br>
-      <div class="row-fluid">
-        <!-- <div class="panel panel-default panel-body"> -->
-          <table id="tblpatients" class="table table-hover">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Address</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @patient.each do |patient| %>
-              <tr data-link="<%= patient_path(patient.id) %>" data-remote="true" class="patient_info" style="cursor:pointer">
-                <td><%= patient.id %></td>
-                <td><%= patient.fullname %></td>
-                <td><%= patient.address %></td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
-        <!-- </div> -->
-      </div>
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+     <div class="row">
+      <!-- <div class="panel panel-default panel-body"> -->
+      <table id="tblpatients" class="table table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @patient.each do |patient| %>
+          <tr data-link="<%= patient_path(patient.id) %>" data-remote="true" class="patient_info" style="cursor:pointer">
+            <td><%= patient.id %></td>
+            <td><%= patient.fullname %></td>
+            <td><%= patient.address %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <!-- </div> -->
     </div>
   </div>
+</div>
 </div>
 
 <script type="text/javascript">

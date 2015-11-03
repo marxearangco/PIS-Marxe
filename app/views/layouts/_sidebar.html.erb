@@ -1,4 +1,4 @@
- <div class="panel panel-danger">
+ <div class="panel panel-danger hidden-sm hidden-xs">
   <div class="panel-heading">
     <h3 class="panel-title">
       Patients
@@ -15,4 +15,13 @@
       <i class="fa fa-user-md fa-xs"></i> Doctor(s)
     </li>
   </ul>
+</div>
+
+<div class="row hidden-md hidden-lg">
+  <i class="fa fa-stethoscope fa-xs"></i> No of Patients | 
+  <%= link_to raw('<i class="fa fa-plus fa-sm"></i> Add Patient'), new_patient_path, remote: true, data: { toggle: 'modal', target: "#view" } %> | 
+  <i class="fa fa-user-md fa-xs"></i> Doctor(s)
+  <br/>
+  <br/>
+
 </div>

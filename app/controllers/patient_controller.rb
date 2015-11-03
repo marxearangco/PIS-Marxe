@@ -7,23 +7,28 @@ class PatientController < ApplicationController
  
  def index
  	@patient = Patient.all
+
  end
 
  def show
  	# @diagnosis = Diagnosis.find(@patient)
- 	@information = Information.where(:id =>params[:id])
- 	@info = Information.find(params[:id])
+ 	@information = Information.where(:patient_id =>params[:id])
+  @information.each do |i|
+ 	  @info_id = i.id
+  end
+  @info=Information.find(@info_id)
   @appointment = Appointment.where(:patient_id=>params[:id])
  end
 
  def new
- 	@patient = current_user.patient.build
-  #@patient = Patient.new
+ 	# @patient = current_user.patient.build
+  @patient = Patient.new
   @patient.build_information
+
  end
 
  def new_image
-  @patient = current_user.patient.build  
+  # @patient = current_user.patient.build  
  end
 
  def create_image
@@ -49,11 +54,12 @@ class PatientController < ApplicationController
 
  def create
  	@patient = current_user.patient.build(patient_params)
- 	if @patient.save
- 		@info = Information.new
- 		@info.patient_id = @patient.id
- 		@info.save
-      	flash[:alert]="<big><span class='glyphicon glyphicon-user'></span></big> New Patient added."
+  @p_id = @patient.id
+  if @patient.save
+    user = User.find(current_user.id)
+      user.patient_id = @patient.id
+    user.save
+    flash[:alert]="<big><span class='glyphicon glyphicon-user'></span></big> New Patient added."
  		redirect_to :back
  	else
       	flash[:error]="<big><span class='glyphicon glyphicon-user'></span></big> Patient not added."
@@ -106,11 +112,14 @@ class PatientController < ApplicationController
  end
 
  def patient_params
- 	params.require(:patient).permit(:lname, :fname, :mi, :address)
+ 	params.require(:patient).permit(:lname, :fname, :mi, :address, :image, 
+                                  information_attributes: [:status, :sex, :age, :bday,
+                                        :occupation, :homephone,:businessphone, 
+                                        :mobilephone, :referredby, :spouse])
  end
 
  def image_params
   params.require(:patient).permit(:image)
- end 
+ end
  
 end

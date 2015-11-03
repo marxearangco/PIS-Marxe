@@ -312,3 +312,12 @@ div.btm-bord {
     color: #000;
     border: 1px solid #EEECC9;
 }
+
+#error_explanation h5 {
+    /*font-size: 12px;*/
+    font-weight: bold;
+}
+
+#error_explanation ul li {
+    font-style: italic;
+}

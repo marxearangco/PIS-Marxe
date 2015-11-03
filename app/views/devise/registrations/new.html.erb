@@ -1,12 +1,22 @@
+<div class="alert-fixed">
+  <div class="col-xs-4 pull-right alert alert-danger alert-dismissible fade in">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <%= devise_error_messages! %>
+  </div>
+
+</div>
+
 <div class="modal-dialog modal-sm" style="border: 1px solid gray">
   <div class="modal-header">
-    <span class="text-center"><strong><span class="glyphicon glyphicon-pencil"></span> SIGN UP</strong></span>
+    <span class="text-center"><span class="glyphicon glyphicon-pencil"></span> SIGN UP</span>
   </div>
   <div class="modal-body">
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-signin"}) do |f| %>
+    
     <div class="form-group">
       <%= f.label :login, 'Username', class: 'sr-only' %>
-      <%= f.text_field :login, autofocus: true, class: 'form-control', placeholder: 'Username', required: true %>
+      <%= f.text_field :username, autofocus: true, class: 'form-control', placeholder: 'Username', required: true %>
+      
     </div>
     <div class="form-group">
       <%= f.label :email, 'Email', class: 'sr-only' %>
@@ -16,7 +26,7 @@
       <%= f.label :password, 'Username', class: 'sr-only' %>
       <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password', required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
     </div>
-
+    <%= f.hidden_field :role, value: 'patient' %>
     <%= f.submit "Sign up", class: 'btn btn-orange btn-block' %>
     <%= render "devise/shared/links" %>
 

@@ -25,3 +25,4 @@ gem 'jquery-ui-rails'
 gem "font-awesome-rails"
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 gem 'jquery-ui-themes'
+gem 'fullcalendar-rails'

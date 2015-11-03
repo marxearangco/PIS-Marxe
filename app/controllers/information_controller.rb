@@ -13,13 +13,10 @@ class InformationController < ApplicationController
   end
 
   def update
+    @id = @info.patient_id
     if @info.update(patient_info)
-      # time = Patient.select('sysdate()')
-      patient=Patient.find(params[:id])
-      patient.updated_at = Time.now
-      patient.save
       flash[:alert]="<big><span class='glyphicon glyphicon-user'></span></big> Patient information updated..."
-      redirect_to patient_path
+      redirect_to patient_path(@id)
     else
       render 'edit'
     end
@@ -44,8 +41,8 @@ class InformationController < ApplicationController
   end
 
   def patient_info
-    params.require(:information).permit(:patient_id, :religion, :status, :sex, :age, :bday,   
-                                        :height, :weight, :occupation, :homephone, :businessphone, :mobilephone, :referredby, :spouse,
+    params.require(:information).permit(:status, :sex, :age, :bday,   
+                                        :occupation, :homephone, :businessphone, :mobilephone, :referredby, :spouse,
                                         :email)
   end
 end

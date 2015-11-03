@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008144456) do
+ActiveRecord::Schema.define(version: 20151101130923) do
 
   create_table "appointments", force: true do |t|
     t.integer  "patient_id"
@@ -77,8 +77,8 @@ ActiveRecord::Schema.define(version: 20151008144456) do
     t.integer  "patient_id"
     t.integer  "appointment_id"
     t.string   "bp"
-    t.decimal  "weight",         precision: 10, scale: 0
-    t.decimal  "height",         precision: 10, scale: 0
+    t.decimal  "weight",         precision: 10, scale: 2
+    t.decimal  "height",         precision: 10, scale: 2
     t.datetime "date_gathered"
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
@@ -101,6 +101,8 @@ ActiveRecord::Schema.define(version: 20151008144456) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "username"
+    t.string   "role"
+    t.integer  "patient_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
