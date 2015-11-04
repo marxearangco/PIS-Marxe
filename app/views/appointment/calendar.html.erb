@@ -8,7 +8,8 @@ $(document).ready(function () {
 
 		eventClick: function(event) {
 			if (event.url) {
-				window.open(event.url);
+				// window.open(event.url);
+				window.open(event.url,'winname',"directories=0,titlebar=0,toolbar=0,location=0,status=0,menubar=0,scrollbars=no,resizable=no,width=400,height=600");
 				return false;
 			}
 		},

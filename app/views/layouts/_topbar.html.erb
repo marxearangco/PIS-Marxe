@@ -1,4 +1,4 @@
-<% @appcount=Appointment.where("remarks is null").count(:id) %>
+<% @appcount=Appointment.where("DATE(appointment_date) ='#{Date.today}'").count(:id) %>
 <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #0E0E29; border: none">
   <div class="container">
     <div class="row">

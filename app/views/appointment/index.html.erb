@@ -7,7 +7,7 @@
     <div class="col-xs-3 pull-right">
       <div class="pull-right">
         <br>    <%= link_to raw('<span class="glyphicon glyphicon-hand-right"></span> Set Appointment'), new_appointment_path, class: 'btn btn-default btn-sm', remote: true, data: { toggle: 'modal', target: "#appointment"}, title: 'Set Appointment' %>
-        <%= link_to raw('<span class="glyphicon glyphicon-calendar"></span> Calendar'), appointment_calendar_path, class: 'btn btn-default btn-sm', data: { toggle: 'tooltip', placement: 'bottom'}, title: 'Show Appointment Calendar' %>
+        <%= link_to raw('<span class="glyphicon glyphicon-calendar"></span> Calendar'), appointment_calendar_path, class: 'btn btn-default btn-sm', data: { toggle: 'tooltip', placement: 'bottom'}, title: 'Show Appointment Calendar', target: :_blank %>
       </div>
     </div>
   </div>

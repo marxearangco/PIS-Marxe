@@ -5,7 +5,7 @@ class AppointmentController < ApplicationController
   def index
     @appointment = Appointment.select('appointments.*, concat(a.lname,", ",a.fname, " ",left(a.mi,1),".") as name')
                   .joins('Left join patients a on appointments.patient_id=a.id')
-                  # .where(:appointment_date=> Date.today)
+                  .where("DATE(appointment_date) = '#{Date.today}'")
                   # .order(:appointment_date)
 
     # @appointment = initialize_grid(Appointment,
