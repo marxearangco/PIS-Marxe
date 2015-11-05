@@ -13,11 +13,8 @@
  *= require fullcalendar
  *= require_tree .
  */
- 
-@import "bootstrap-sprockets";
+
+/ @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "bootstrap3-datetimepicker";
+/ @import "bootstrap3-datetimepicker";
 @import "font-awesome";
-
-
-
