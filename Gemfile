@@ -1,7 +1,18 @@
 source 'http://rubygems.org'
 
-gem 'rails', '4.0.5'
-gem 'mysql2'
+group :production do
+	ruby '2.2.2', :engine => 'jruby', :engine_version => '9.0.0.0'
+	gem 'rails', '4.1.8'
+	gem 'rails_12factor'
+	gem 'puma'
+end
+
+group :development do
+	# gem 'rails', '4.0.5'
+	gem 'spring'
+end
+
+gem 'activerecord-jdbcpostgresql-adapter'
 gem 'sass-rails', '~> 4.0.2'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
