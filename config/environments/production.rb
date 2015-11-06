@@ -77,4 +77,8 @@ PIS::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+  # Paperclip.options[:command_path] = "C:/Program Files (x86)/GnuWin32/bin;C:/Program Files (x86)/ImageMagick-6.9.1-Q16/"
+  Paperclip.options[:command_path] = "/usr/local/bin/"
+  Paperclip.options[:log] = true
+  Paperclip.options[:log_command] = true
 end
