@@ -10,7 +10,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0',                            group: :doc
+gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sprockets', '2.11.0'
 gem 'sprockets-rails','2.0.0'
 gem 'paperclip', '~> 4.3.0'
@@ -28,7 +28,6 @@ group :development do
 	gem 'mysql2', '0.3.18'
 end
 
-
 gem 'simple_form', '~> 3.1.0'
 gem 'devise', '~> 3.5.1'
 gem 'bootstrap-sass', '~> 3.2.0'
@@ -40,7 +39,3 @@ gem 'jquery-ui-themes'
 gem 'fullcalendar-rails'
 gem 'tzinfo-data'
 gem 'tzinfo'
-
-
-
-
