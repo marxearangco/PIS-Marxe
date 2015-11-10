@@ -34,7 +34,7 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.15.35'
 gem "font-awesome-rails"
-gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+gem 'jquery-datatables-rails'#, github: 'rweng/jquery-datatables-rails'
 gem 'jquery-ui-themes'
 gem 'fullcalendar-rails'
 gem 'tzinfo-data'
