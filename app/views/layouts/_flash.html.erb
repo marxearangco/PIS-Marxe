@@ -1,9 +1,6 @@
 <% flash.each do |type, message| %>
-<div class="col-xs-4">
-</div>
-<div class="col-xs-4">
-</div>
-  <div class="col-xs-4 pull-left alert <%= alert_class_for(type) %> alert-dismissible fade in">
+
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 pull-left alert <%= alert_class_for(type) %> alert-dismissible fade in">
     <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
     <%= message.html_safe %>
     
