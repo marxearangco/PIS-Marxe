@@ -17,8 +17,8 @@ gem 'paperclip', '~> 4.3.0'
 gem 'will_paginate'
 
 group :production do
-	ruby '2.1.6'
-	#ruby '2.2.2', :engine => 'jruby', :engine_version => '9.0.0.0'
+	#ruby '2.1.6'
+	ruby '2.2.2', :engine => 'jruby', :engine_version => '9.0.0.0'
 	gem 'rails_12factor'
 	gem 'puma'
 	gem 'pg'
