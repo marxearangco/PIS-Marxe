@@ -1,22 +1,24 @@
-default: &default
-  adapter: postgresql
-  encoding: unicode
+development:
+  encoding: utf8
+  adapter: mysql2
+  host: localhost
+  database: PIS_development
+  username: root
+  password: 
   pool: 5
 
-development:
-  <<: *default
-  database: PIS_development
-  username: postgres
-  password: sa
-
 test:
-  <<: *default
+  encoding: unicode
+  adapter: mysql2
   database: PIS_test
   username: postgres
   password: sa
+  pool: 5
 
 production:
-  <<: *default
+  encoding: unicode
+  adapter: postgresql
   database: PIS_production
   username: postgres
-  password: 
+  password: sa
+  pool: 5
