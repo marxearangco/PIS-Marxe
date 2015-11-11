@@ -17,8 +17,7 @@
      <th>No.</th>
      <!-- <th>Date</th> -->
      <th>Patient</th>
-     <th>Purpose</th>
-     <th>Result</th>
+     <th>Treatment</th>
      <th>Remarks</th>
    </tr>
  </thead>
@@ -28,9 +27,8 @@
   <tr data-link="<%= appointment_path(app.id) %>" id="<%= app.patient_id %>" style="cursor:pointer" data-toggle="tooltip" data-placement="bottom" title="Right click for options.">
    <td><%= i %></td>
    <!-- <td> --><!--%= app.appointment_date.strftime("%D") %--><!-- </td> -->
-   <td><%= app.name %></td>
+   <td><%= app.patient.lname.titlecase + ', ' + app.patient.fname.titlecase + ' ' + app.patient.mi.first.titlecase + '.' %></td>
    <td><%= truncate(app.purpose) %></td>
-   <td><%= app.result %></td>
    <td><%= app.remarks %></td>
  </tr>
  <% i += 1 %>

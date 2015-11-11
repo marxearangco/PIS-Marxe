@@ -3,9 +3,10 @@ class AppointmentController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @appointment = Appointment.select('appointments.*, concat(a.lname,", ",a.fname, " ",left(a.mi,1),".") as name')
-                  .joins('Left join patients a on appointments.patient_id=a.id')
-                  .where("DATE(appointment_date) = '#{Date.today}'")
+    @appointment = Appointment.joins(:patient).where("DATE(appointment_date) = '#{Date.today}'")
+    # @appointment = Appointment.select('appointments.*, concat(a.lname,", ",a.fname, " ",left(a.mi,1),".") as name')
+                  # .joins('Left join patients a on appointments.patient_id=a.id')
+                  # .where("DATE(appointment_date) = '#{Date.today}'")
                   # .order(:appointment_date)
 
     # @appointment = initialize_grid(Appointment,

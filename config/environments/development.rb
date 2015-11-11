@@ -28,7 +28,7 @@ PIS::Application.configure do
   config.assets.debug = true
   # config.action_mailer.defaulth_url_options ={ host: 'localhost', port: 3000 }
 
-  Paperclip.options[:command_path] = "C:/Program Files (x86)/GnuWin32/bin;C:/Program Files (x86)/ImageMagick-6.9.1-Q16/"
+  Paperclip.options[:command_path] = "C:/Program Files/GnuWin32/bin;C:/Program Files/ImageMagick-6.9.1-Q16/"
   #Paperclip.options[:command_path] = "/usr/local/bin/"
   Paperclip.options[:log] = true
   Paperclip.options[:log_command] = true
