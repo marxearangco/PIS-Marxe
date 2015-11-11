@@ -17,7 +17,7 @@
 						<%= image_tag @patient.image.url(:small), class: 'img-responsive', style: 'height: 150px; cursor: pointer' %>
 					</div>
 				</div>
-				<div class="col col-xs-8 col-sm-8 col-lg-10 col-md-9">
+				<div class="col col-xs-7 col-sm-7 col-lg-10 col-md-9">
 					<div class="row">
 						<p>
 						<span style="font-size:25px; font-weight: normal; color: #FF4209"><%= @patient.lname + ', ' + @patient.fname + ' ' + @patient.mi  %></span>
@@ -44,7 +44,7 @@
 
 		<div class="panel panel-default panel-style">
 			<div class="panel-body">
-				<span style="font-size:18px;"><i class="fa fa-street-view fa-lg iconheader"></i> <strong>Personal Information</strong></span>
+				<span style="font-size: 1.2em;"><i class="fa fa-street-view fa-lg iconheader"></i> <strong>Personal Information</strong></span>
 				<span class="pull-right">
 					<div>
 						<!-- <a class="lblinfo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor:pointer">
@@ -66,66 +66,66 @@
 				<div class="row form-horizontal">
 					<div class="col col-xs-12 col-sm-12 col-lg-4 col-md-4">
 						<div class="form-group">
-							<%= label_tag :occupation,'Occupation', class: 'control-label col-xs-4', style: 'text-align: left' %>
-							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+							<%= label_tag :occupation,'Occupation', class: 'control-label col-xs-5 col-sm-5 col-md-8 col-lg-8', style: 'text-align: left' %>
+							<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
 								<span class="form-control lblinfo"><%= f.occupation %></span>
 							</div>
 						</div>
 						<div class="form-group">
-							<%= label_tag :sex, nil, class: 'pull-left col-xs-4', style: 'text-align: left' %>
-							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+							<%= label_tag :sex, nil, class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
+							<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
 								<span class="form-control lblinfo"><%= f.sex %></span>
 							</div>
 						</div>
 						<div class="form-group">
-							<%= label_tag :mobilephone, 'Mobile No.', class: 'col-xs-4', style: 'text-align: left' %>
-							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+							<%= label_tag :mobilephone, 'Mobile No.', class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
+							<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
 								<span class="form-control lblinfo"><%= f.mobilephone %></span>
 							</div>
 						</div>
 						<div class="form-group">
-							<%= label_tag :referredby, 'Referred by', class: 'pull-left col-xs-4', style: 'text-align: left' %>
-							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+							<%= label_tag :referredby, 'Referred by', class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
+							<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
 								<span class="form-control lblinfo"><%= f.referredby %></span>
 							</div>
 						</div>
 					</div>
 					<div class="col col-xs-12 col-sm-12 col-lg-4 col-md-4">
 						<div class="form-group">
-							<%= label_tag :bday, 'Birth Date', class: 'pull-left col-xs-4', style: 'text-align: left' %>
-							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+							<%= label_tag :bday, 'Birth Date', class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
+							<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
 								<span class="form-control lblinfo"><%= f.bday %></span>
 							</div>
 						</div>
 						<div class="form-group">
-							<%= label_tag :status, 'Status', class: 'pull-left col-xs-4', style: 'text-align: left' %>
-							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+							<%= label_tag :status, 'Status', class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
+							<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
 								<span class="form-control lblinfo"><%= f.status %></span>
 							</div>
 						</div>
 						<div class="form-group">
-							<%= label_tag :businessphone, 'Business No.', class: 'pull-left col-xs-4', style: 'text-align: left' %>
-							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+							<%= label_tag :businessphone, 'Business No.', class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
+							<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
 								<span class="form-control lblinfo"><%= f.businessphone %></span>
 							</div>
 						</div>
 					</div>
 					<div class="col col-xs-12 col-sm-12 col-lg-4 col-md-4">
 						<div class="form-group">
-							<%= label_tag :age, nil, class: 'pull-left col-xs-4', style: 'text-align: left' %>
-							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+							<%= label_tag :age, nil, class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
+							<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
 								<span class="form-control lblinfo"><%= f.age %></span>
 							</div>
 						</div>
 						<div class="form-group">
-							<%= label_tag :spouse, nil, class: 'pull-left col-xs-4', style: 'text-align: left' %>
-							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+							<%= label_tag :spouse, nil, class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
+							<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
 								<span class="form-control lblinfo"><%= f.spouse %></span>
 							</div>
 						</div>
 						<div class="form-group">
-							<%= label_tag :homephone, 'Home Phone', class: 'pull-left col-xs-4', style: 'text-align: left' %>
-							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+							<%= label_tag :homephone, 'Home Phone', class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
+							<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
 								<span class="form-control lblinfo"><%= f.homephone %></span>
 							</div>
 						</div>
