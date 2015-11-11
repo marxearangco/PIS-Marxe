@@ -3,7 +3,7 @@ class PatientController < ApplicationController
  before_action :authenticate_user!, :except=> [:startup]
 
  def startup
-  @user = User.all
+  
  end
  
  def index
