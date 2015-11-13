@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '4.1.8'
 
@@ -17,7 +17,7 @@ gem 'paperclip', '~> 4.3.0'
 gem 'will_paginate'
 
 group :production do
-	ruby '2.1.6'
+	ruby '2.0.0'
 	gem 'rails_12factor'
 	gem 'puma'
 	gem 'pg'

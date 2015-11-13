@@ -61,7 +61,7 @@ class PatientController < ApplicationController
       user.patient_id = @patient.id
     user.save
     flash[:alert]="<big><span class='glyphicon glyphicon-user'></span></big> New Patient added."
- 		redirect_to :back
+ 		redirect_to @patient
  	else
       	flash[:error]="<big><span class='glyphicon glyphicon-user'></span></big> Patient not added."
  		render 'new'
