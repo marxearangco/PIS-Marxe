@@ -1,98 +1,104 @@
 <%= simple_form_for(@info, html: { class: 'form-horizontal' }) do |f| %>
-<div class="row form-horizontal">
-	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-		<div class="form-group">
-			<%= f.label :occupation, nil, class: 'control-label col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
-			<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
-				<%= f.text_field :occupation, class: 'form-control input-sm', autofocus: true %>
+<div class="form-horizontal">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			<div class="form-group">
+				<%= f.label :occupation, nil, class: 'control-label col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
+				<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
+					<%= f.text_field :occupation, class: 'form-control input-sm', autofocus: true %>
+				</div>
 			</div>
 		</div>
-
-	</div>
-	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-		<div class="form-group">
-			<%= f.label :sex, nil, class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
-			<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
-				<%= f.select :sex, options_for_select([[ "Male", "Male"],["Female", "Female"]], @info.sex),{}, {class: 'form-control input-sm', style: 'font-size: 14px'} %>
+		<div class="col-xs-12 col-sm-12 col-lg-4 col-md-4">
+			<div class="form-group">
+				<%= f.label :bday, 'Birth Date', class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
+				<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
+					<%= f.text_field :bday, class: 'form-control input-sm' %>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-		<div class="form-group ">
-			<%= f.label :mobilephone, 'Mobile No.', class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
-			<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
-				<%= f.text_field :mobilephone, class: 'form-control input-sm' %>
-			</div>
-		</div>
-	</div>
-	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-		<div class="form-group">
-			<%= f.label :referredby, 'Referred by', class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
-			<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
-				<%= f.text_field :referredby, class: 'form-control input-sm' %>
+		<div class="col-xs-12 col-sm-12 col-lg-4 col-md-4">
+			<div class="form-group">
+				<%= f.label :age, nil, class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
+				<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
+					<%= f.text_field :age, class: 'form-control input-sm' %>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="col-xs-12 col-sm-12 col-lg-4 col-md-4">
-		<div class="form-group">
-			<%= f.label :bday, 'Birth Date', class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
-			<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
-				<%= f.text_field :bday, class: 'form-control input-sm' %>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			<div class="form-group">
+				<%= f.label :sex, nil, class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
+				<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
+					<%= f.select :sex, options_for_select([[ "Male", "Male"],["Female", "Female"]], @info.sex),{}, {class: 'form-control input-sm', style: 'font-size: 14px'} %>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-lg-4 col-md-4">
+			<div class="form-group">
+				<%= f.label :status, 'Status', class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
+				<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
+					<%= f.select :status, options_for_select([[ "Single", "Single"],["Married", "Married"],["Separated", "Separated"],["Widow(er)", "Widow(er)"]], @info.status),{}, {class: 'form-control', style: 'font-size: 14px'} %>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-lg-4 col-md-4">
+			<div class="form-group">
+				<%= f.label :spouse, nil, class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
+				<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
+					<%= f.text_field :spouse, class: 'form-control input-sm' %>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="col-xs-12 col-sm-12 col-lg-4 col-md-4">
-		<div class="form-group">
-			<%= f.label :status, 'Status', class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
-			<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
-				<%= f.select :status, options_for_select([[ "Single", "Single"],["Married", "Married"],["Separated", "Separated"],["Widow(er)", "Widow(er)"]], @info.status),{}, {class: 'form-control', style: 'font-size: 14px'} %>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			<div class="form-group ">
+				<%= f.label :mobilephone, 'Mobile No.', class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
+				<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
+					<%= f.text_field :mobilephone, class: 'form-control input-sm' %>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-lg-4 col-md-4">
+			<div class="form-group">
+				<%= f.label :businessphone, 'Business No.', class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
+				<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
+					<%= f.text_field :businessphone, class: 'form-control input-sm' %>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-lg-4 col-md-4">
+			<div class="form-group">
+				<%= f.label :homephone, 'Home Phone', class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
+				<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
+					<%= f.text_field :homephone, class: 'form-control input-sm' %>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="col-xs-12 col-sm-12 col-lg-4 col-md-4">
-		<div class="form-group">
-			<%= f.label :businessphone, 'Business No.', class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
-			<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
-				<%= f.text_field :businessphone, class: 'form-control input-sm' %>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			<div class="form-group">
+				<%= f.label :referredby, 'Referred by', class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
+				<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
+					<%= f.text_field :referredby, class: 'form-control input-sm' %>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="col-xs-12 col-sm-12 col-lg-4 col-md-4">
-		<div class="form-group">
-			<%= f.label :age, nil, class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
-			<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
-				<%= f.text_field :age, class: 'form-control input-sm' %>
-			</div>
+		<div class="col-xs-12 col-sm-12 col-lg-4 col-md-4">
 		</div>
-	</div>
-	<div class="col-xs-12 col-sm-12 col-lg-4 col-md-4">
-		<div class="form-group">
-			<%= f.label :spouse, nil, class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
-			<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
-				<%= f.text_field :spouse, class: 'form-control input-sm' %>
+		<div class="col-xs-12 col-sm-12 col-lg-4 col-md-4">
+			<div class="pull-right">
+				<%= button_tag(type: 'submit', class: "btn btn-default btn-xs") do %>
+				<i class='glyphicon glyphicon-ok'></i> Update
+				<% end %>
+				<%= link_to raw("<i class='glyphicon glyphicon-remove'></i> Cancel"), @patients, class: 'btn btn-danger btn-xs', id: 'back' %> 
 			</div>
-		</div>
-	</div>
-	<div class="col-xs-12 col-sm-12 col-lg-4 col-md-4">
-		<div class="form-group">
-			<%= f.label :homephone, 'Home Phone', class: 'pull-left col-xs-5 col-sm-5 col-md-4 col-lg-4', style: 'text-align: left' %>
-			<div class="col-xs-7 col-sm-7 col-md-8 col-lg-8">
-				<%= f.text_field :homephone, class: 'form-control input-sm' %>
-			</div>
-		</div>
-	</div>
-	<div class="col-xs-12 col-sm-12 col-lg-4 col-md-4">
-	</div>
-	<div class="col-xs-12 col-sm-12 col-lg-4 col-md-4">
-		<div class="pull-right">
-			<%= button_tag(type: 'submit', class: "btn btn-default btn-xs") do %>
-			<i class='glyphicon glyphicon-ok'></i> Update
-			<% end %>
-			<%= link_to raw("<i class='glyphicon glyphicon-remove'></i> Cancel"), @patients, class: 'btn btn-danger btn-xs', id: 'back' %> 
 		</div>
 	</div>
 </div>
-
 <% end %>
 
 <script type="text/javascript">

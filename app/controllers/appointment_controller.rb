@@ -4,20 +4,10 @@ class AppointmentController < ApplicationController
 
   def index
     @appointment = Appointment.joins(:patient).where("DATE(appointment_date) = '#{Date.today}'")
-    # @appointment = Appointment.select('appointments.*, concat(a.lname,", ",a.fname, " ",left(a.mi,1),".") as name')
-                  # .joins('Left join patients a on appointments.patient_id=a.id')
-                  # .where("DATE(appointment_date) = '#{Date.today}'")
-                  # .order(:appointment_date)
-
-    # @appointment = initialize_grid(Appointment,
-    #   include: :patient,
-    #   #conditions: {:patient_id=>'5'},
-    #   per_page: 10
-    # )
   end
 
   def create
-    @appointment = Appointment.create(appointment_params)
+    @appointment=current_user.appointment.build(appointment_params)
     @appointment.user_id = current_user.id
     if @appointment.save
       flash[:alert]="<big><span class='glyphicon glyphicon-book'></span></big> Appointment added."
@@ -58,17 +48,20 @@ class AppointmentController < ApplicationController
   end
 
   def show
-    # @patient_name = "Please Select.."
     @patient = Patient.find(@appointment.patient_id)
+    @product=Product.all
   end
   
   def new
-    @id = current_user.id
-    @appointment = Appointment.new
+    @appointment = current_user.appointment.build
+    @appointment.services.build
     @patient_name = "Please Select.."
+    @mode = "Walk In"
+    @product=Product.all
   end
 
   def edit
+
   end
 
   private
@@ -78,6 +71,6 @@ class AppointmentController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:patient_id, :purpose, :appointment_date)
+   params.require(:appointment).permit(:patient_id, :purpose, :appointment_date, :mode, :product_ids=>[])
   end
 end

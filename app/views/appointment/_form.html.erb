@@ -1,4 +1,5 @@
 <%= simple_form_for (@appointment), wrapper: :pis_form, wrapper_mappings: { pis: :pis_form, file: :vertical_file_input, mi: :pis_form_small } do |f| %>
+<%= f.hidden_field :mode, :value=> @mode %>
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 		<div class="form-group">
@@ -23,6 +24,21 @@
 		<div class="form-group">
 			<label>Treatment/Procedures</label>
 			<%= f.text_area :purpose, class: 'form-control' %>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<label>Services</label>
+				<br/>
+				<%= hidden_field_tag "appointment[product_ids][]", nil %>
+					<% Product.all.each do |p| %>
+					<%= check_box_tag "appointment[product_ids][]", p.id, @appointment.product_ids.include?(p.id), id: dom_id(p) %>
+					<%= label_tag dom_id(p), p.name %> <br>
+					<% end %>
+			</div>
 		</div>
 	</div>
 </div>

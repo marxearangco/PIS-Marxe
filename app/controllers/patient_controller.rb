@@ -104,6 +104,7 @@ class PatientController < ApplicationController
   @appointment = Appointment.new
   @patient = Patient.find(params[:id])
   @patient_name = @patient.fullname
+  @mode = "Online Booking"
  end
 
  private

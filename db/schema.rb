@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151101130923) do
+ActiveRecord::Schema.define(version: 20151116162751) do
 
   create_table "appointments", force: true do |t|
     t.integer  "patient_id"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20151101130923) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "appointment_date"
+    t.string   "mode"
+    t.integer  "service_id"
   end
 
   add_index "appointments", ["patient_id"], name: "index_appointments_on_patient_id", using: :btree
@@ -35,7 +37,7 @@ ActiveRecord::Schema.define(version: 20151101130923) do
     t.datetime "updated_at"
   end
 
-  add_index "diagnoses", ["patient_id"], name: "index_diagnoses_on_patient_id", using: :btree
+  add_index "diagnoses", ["patient_id"], name: "index_diagnoses_on_post_id", using: :btree
   add_index "diagnoses", ["user_id"], name: "index_diagnoses_on_user_id", using: :btree
 
   create_table "information", force: true do |t|
@@ -73,12 +75,24 @@ ActiveRecord::Schema.define(version: 20151101130923) do
     t.datetime "image_updated_at"
   end
 
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.string   "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "services", force: true do |t|
+    t.integer "appointment_id"
+    t.integer "service_id"
+  end
+
   create_table "statistics", force: true do |t|
     t.integer  "patient_id"
     t.integer  "appointment_id"
     t.string   "bp"
-    t.decimal  "weight",         precision: 10, scale: 0
-    t.decimal  "height",         precision: 10, scale: 0
+    t.decimal  "weight",         precision: 10, scale: 2
+    t.decimal  "height",         precision: 10, scale: 2
     t.datetime "date_gathered"
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
@@ -88,6 +102,7 @@ ActiveRecord::Schema.define(version: 20151101130923) do
   add_index "statistics", ["patient_id"], name: "index_statistics_on_patient_id", unique: true, using: :btree
 
   create_table "users", force: true do |t|
+    t.integer  "patient_id"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -100,13 +115,12 @@ ActiveRecord::Schema.define(version: 20151101130923) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "name"
     t.string   "username"
     t.string   "role"
-    t.integer  "patient_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["patient_id"], name: "patient_id", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 

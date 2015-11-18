@@ -2,7 +2,7 @@ development:
   encoding: utf8
   adapter: mysql2
   host: localhost
-  database: PIS_development
+  database: PIS
   username: root
   password: 
   pool: 5
@@ -11,8 +11,8 @@ test:
   encoding: utf8
   adapter: mysql2
   database: PIS_test
-  username: postgres
-  password: sa
+  username: root
+  password: 
   pool: 5
 
 production:

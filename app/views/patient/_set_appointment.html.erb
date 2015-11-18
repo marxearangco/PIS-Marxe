@@ -1,9 +1,10 @@
 <div class="modal-header">
-  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color: #fff" aria-hidden="true">&times;</span></button>
-  <span style="font-size: 16px">Set Appointment</span>
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color: #fff" aria-hidden="true">&times;</span></button>
+	<span style="font-size: 16px">Set Appointment</span>
 </div>
 <div class="modal-body">
-<%= simple_form_for (@appointment), wrapper: :pis_form, wrapper_mappings: { pis: :pis_form, file: :vertical_file_input, mi: :pis_form_small } do |f| %>
+	<%= simple_form_for (@appointment), wrapper: :pis_form, wrapper_mappings: { pis: :pis_form, file: :vertical_file_input, mi: :pis_form_small } do |f| %>
+	<%= f.hidden_field :mode, :value=> @mode %>
 	<div class="row">
 		<div class="col-xs-8">
 			<label>Patient Name</label>
@@ -25,7 +26,7 @@
 	<br />
 	<div class="modal-footer">
 		<div class="btn-group form-actions">
-		<!--%= link_to 'Back', @patient, class: 'btn btn-default' %-->
+			<!--%= link_to 'Back', @patient, class: 'btn btn-default' %-->
 			<%= f.button :submit, value:'Save', class: 'btn btn-default' %>
 		</div>
 	</div>
