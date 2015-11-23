@@ -25,7 +25,7 @@ PIS::Application.configure do
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
-  config.assets.debug = true
+  config.assets.debug = false
   #config.action_mailer.defaulth_url_options ={ host: 'localhost', port: 3000 }
 
   Paperclip.options[:command_path] = "C:/Program Files (x86)/GnuWin32/bin;C:/Program Files (x86)/ImageMagick-6.9.1-Q16/"

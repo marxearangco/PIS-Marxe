@@ -35,8 +35,10 @@
 				<br/>
 				<%= hidden_field_tag "appointment[product_ids][]", nil %>
 					<% Product.all.each do |p| %>
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 					<%= check_box_tag "appointment[product_ids][]", p.id, @appointment.product_ids.include?(p.id), id: dom_id(p) %>
 					<%= label_tag dom_id(p), p.name %> <br>
+					</div>
 					<% end %>
 			</div>
 		</div>
